@@ -14,8 +14,9 @@
 <nav>
 <ul>
     <li><img src="tuffah1.jpg" width="180" height="60" /></li>
-	<li><b><a href="#">Profile</a></b></li>
-    <li><b><a href="#">Leave management</a></b></li>
+	<li><b><a href="profile.php">Profile</a></b></li>
+    <li><b><a href="leave_app.php">Leave application</a></b></li>
+    <li><b><a href="#">leave status</a></b></li>
     <li><b><a href="#">Account</a></b></li>
 
 </ul>
