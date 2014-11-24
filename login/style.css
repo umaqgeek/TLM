@@ -1,0 +1,22 @@
+#login
+{
+    margin-top:100px;
+    margin-bottom:100px;
+    margin-right:150px;
+    margin-left:400px;
+   
+    padding: 9px 35px;
+    width: 200px;
+    border-radius: 200px;
+}
+#register
+{
+    margin-top:150px;
+    margin-bottom:50px;
+    margin-right:250px;
+    margin-left:20px;
+   
+    padding: 9px 3px;
+    width: 200px;
+    border-radius: 200px;
+}
