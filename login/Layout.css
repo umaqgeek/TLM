@@ -28,3 +28,14 @@ body  {
 #Footer {
 	height:100px;
 }
+#profile
+{
+    margin-top:20px;
+    margin-bottom:150px;
+    margin-right:220px;
+    margin-left:160px;
+   
+    padding: 9px 3px;
+    width: 200px;
+    border-radius: 200px;
+}
