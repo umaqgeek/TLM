@@ -1,4 +1,7 @@
+<?php
+include("config.php");
 
+?>
 <body background="blur.jpg">
 <link href="Layout.css" rel="stylesheet" type="text/css" />
 <link href="Menu.css" rel="stylesheet" type="text/css" />
