@@ -27,33 +27,31 @@ include("config.php");
 <div id="Footer">
 </div>
 </div>
-
 </html>
-
-<h1 align="center">LEAVE APPLICATION</h1>
+<h1 align="center">Leave application</h1>
 <center>
 <table width="568" height="286" border="3" align="center" >
 <tr>
-<td>Name</td><td> : </td><td> <input type="text" name="StaffName"/></td>
+<td>Name</td><td> : </td><td> <input size="70" type="text" name="StaffName"/></td>
 </tr>
 <tr>
-<td>Unit</td><td> : </td><td><input name="days" type="radio" value="days" />Days<input name="Hour" type="radio" value="Hour" />Hour</td>
+<td>Leave Type</td><td></td><td><input name="Leave Type" type="checkbox" value="integer">Annual <br><input name="Leave Type" type="checkbox" value="integer">Sick <br><input name="Leave Type" type="checkbox" value="integer">Family <br><input name="Leave Type" type="checkbox" value="integer">Study <br><input name="Leave Type" type="checkbox" value="integer">Unpaid <br><input name="Leave Type" type="checkbox" value="integer">Other<br></td>
 </tr>
 <tr>
-<td>Leave Available</td><td> : </td><td>30 days</td>
+<td>Leave Available</td><td> : </td><td><center>30 days</center></td>
 </tr>
 <tr>
-<td>Date Range</td><td> : </td><td><center>From :<input type="Datetime" name="LeaveFromDt"/></br></br>to :<input type="Datetime" name="LeaveToDt"/></center><center></td></td>
+<td>Date Range</td><td> : </td><td><center>From :<input type="Datetime" name="LeaveFromDt"/> -     to :<input type="Datetime" name="LeaveToDt"/></center><center></td></td>
 </tr>
 <tr>
-<td>Leave Requested</td><td> : </td><td>day</td>
+<td>Leave Requested</td><td> : </td><td><center>day</center></td>
 </tr>
 <tr>
-<td>Note</td><td> : </td><td><input type="text" name="Note"/></td></td>
+<td>Note</td><td> : </td><td><textarea name="Note" cols="73" rows="3"></textarea></td></td>
 </tr>
 
 </table></br>
-<input type="submit" value="submit"/>
+<input type="submit" value="Submit"/>
 </center>
 </body>
 </html>

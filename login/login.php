@@ -4,18 +4,21 @@ include("config.php");
 if (isset($_POST['StaffUsername'])){
 $StaffUsername = $_POST['StaffUsername'];
 $StaffPassword = $_POST['StaffPassword'];
+
 $sql = "SELECT * FROM staff WHERE StaffUsername='".$StaffUsername."' AND StaffPassword='".$StaffPassword."'LIMIT 1";
+$query = "SELECT StaffType FROM staff WHERE StaffUsername='".$StaffUsername."' AND StaffPassword='".$StaffPassword."'LIMIT 1";
+
 $res = mysql_query($sql);
-if (mysql_num_rows($res)== 1){
-    $_SESSION['auth']=true;
-	Header ("Location:main menu.php");
+
+if (mysql_num_rows($res) == 1){
+	$_SESSION['auth']=true;
+	Header ("Location:admin.php");
 	exit();
 }
 else{
 	echo "invalid login information";
 	exit();
-	}
-}
+}}
 ?>
 <link rel="stylesheet" type="text/css" href="style.css">
 <body background="blur.jpg">

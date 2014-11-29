@@ -27,6 +27,12 @@ include("config.php");
 </div>
 <center>
 <h1> leave status</h1>
-</center>
 </body>
 </html>
+<table width="400" height="3" border="2" align="center" >
+<tr><td>Name</td><td>:</td><td>Staff Name</td></tr>
+<tr><td>From date</td><td>:</td><td>date</td></tr>
+<tr><td>To date</td><td>:</td><td>date</td></tr>
+<tr><td>Status</td><td>:</td><td>Approved</td></tr>
+</table>
+</center>

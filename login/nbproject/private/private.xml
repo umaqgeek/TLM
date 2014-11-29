@@ -3,16 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/login/registration.php</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/login/config.php</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/login/profile.php</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/login/main%20menu.php</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/login/login.php</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/login/account.php</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/login/leave_app.php</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/login/style.css</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/login/LeaveStatus.php</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/login/logout.php</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/login/ConfirmAdd.php</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/login/add.php</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/login/leave%20History.php</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/login/account%20admin.php</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/login/admin.php</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/login/profile%20admin.php</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/login/ConfirmLogin.php</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/login/update.php</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/login/view.php</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/login/search.php</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/login/Leave%20application%20admin.php</file>
+            <file>file:/C:/Users/User/Documents/NetBeansProjects/login/delete.php</file>
         </group>
     </open-files>
 </project-private>
