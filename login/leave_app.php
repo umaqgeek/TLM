@@ -6,7 +6,6 @@ include("config.php");
 <link href="Layout.css" rel="stylesheet" type="text/css" />
 <link href="Menu.css" rel="stylesheet" type="text/css" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
 </head>
 
 <body m background="blur.jpg">
@@ -27,31 +26,29 @@ include("config.php");
 <div id="Footer">
 </div>
 </div>
-</html>
-<h1 align="center">Leave application</h1>
 <center>
-<table width="568" height="286" border="3" align="center" >
+<table width="400" height="2" border="0" align="center" >
 <tr>
-<td>Name</td><td> : </td><td> <input size="70" type="text" name="StaffName"/></td>
-</tr>
+<td><center><input type="submit" value="JAN"/></center></td><td><center><h1>2014</h1></center></td><td><center><input type="submit" value="FEB"/></center></td></tr>
+</table>
+</center>
+<table width="400" height="350" border="2" align="center" >
 <tr>
-<td>Leave Type</td><td></td><td><input name="Leave Type" type="checkbox" value="integer">Annual <br><input name="Leave Type" type="checkbox" value="integer">Sick <br><input name="Leave Type" type="checkbox" value="integer">Family <br><input name="Leave Type" type="checkbox" value="integer">Study <br><input name="Leave Type" type="checkbox" value="integer">Unpaid <br><input name="Leave Type" type="checkbox" value="integer">Other<br></td>
-</tr>
+<td width="50"><center><b>SUN</b></center></td><td width="50"><center><b>MON</b></center></td><td width="50"><center><b>TUE</b></center></td><td width="50"><center><b>WED</b></center></td><td width="50"><center><b>THU</b></center></td><td width="50"><center><b>FRI</b></center></td><td width="50"><center><b>SAT</b></center></td></tr>
 <tr>
-<td>Leave Available</td><td> : </td><td><center>30 days</center></td>
-</tr>
+<td><center>29</center></td><td><center>30</center></td><td><center>31</center></td><td><center>1</center></td><td><center>2</center></td><td><center>3</center></td><td><center>4</center></td></tr>
 <tr>
-<td>Date Range</td><td> : </td><td><center>From :<input type="Datetime" name="LeaveFromDt"/> -     to :<input type="Datetime" name="LeaveToDt"/></center><center></td></td>
-</tr>
+<td><center>5</center></td><td><center>6</center></td><td><center>7</center></td><td><center>8</center></td><td><center>9</center></td><td><center>10</center></td><td><center>11</center></td></tr>
 <tr>
-<td>Leave Requested</td><td> : </td><td><center>day</center></td>
-</tr>
+<td><center>12</center></td><td><center>13</center></td><td><center>14</center></td>
+<td><center>15</center></td><td><center>16</center></td><td><center>17</center></td><td><center>18</center></td></tr>
 <tr>
-<td>Note</td><td> : </td><td><textarea name="Note" cols="73" rows="3"></textarea></td></td>
-</tr>
-
+<td><center>19</center></td><td><center>20</center></td><td><center>21</center></td>
+<td><center>22</center></td><td><center>23</center></td><td><center>24</center></td><td><center>25</center></td></tr>
+<tr>
+<td><center>26</center></td><td><center>27</center></td><td><center>28</center></td>
+<td><center>29</center></td><td><center>30</center></td><td><center>31</center></td><td><center>1</center></td></tr>
 </table></br>
-<input type="submit" value="Submit"/>
 </center>
 </body>
 </html>
