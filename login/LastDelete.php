@@ -26,10 +26,26 @@
 </div>
 </div>
 <center>
-<h1>Delete Staff</h1>
-<form action="ConfirmDelete.php" method="POST">
-    <b>Enter Staff ID:</b> <input type="text" name="Delete"/></br></br>
-    <centre>
-<input type="submit" value="Search"/>
-</form>
+<?php
+$dbuser="root";
+$dbpass = "";
+$dbhost = "localhost";
+$conn = mysql_connect($dbhost,$dbuser,$dbpass);
+
+if (isset($_POST['Delete'])){
+$Delete = $_POST['Delete'];
+$sql = 'DELETE
+FROM `leave_app`.`staff`
+WHERE `StaffID` ="'.$Delete.'"';
+
+mysql_select_db('leave_app');
+if ($mysql_query($sql))
+{
+	echo "<b>SUCCESS!</b>";
+	
+}
+else{
+	die('could not get data: '. mysql_error());;
+}}
+?>
 </center>
