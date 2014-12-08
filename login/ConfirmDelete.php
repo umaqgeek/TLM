@@ -36,39 +36,6 @@
 </br>
 <center>
 <?php
-$Delete = $_POST['Delete'];
-$dbuser="root";
-$dbpass = "";
-$dbhost = "localhost";
-$conn = mysql_connect($dbhost,$dbuser,$dbpass);
-
-if(! $conn)
-
-{
-	die('could not connect: '. mysql_error());
-}
-if (isset($_POST['Delete'])){
-$Delete = $_POST['Delete'];
-$sql = 'SELECT StaffName, StaffIC, StaffGender, StaffAddress, StaffDOB, StaffContactNo, StaffEmail FROM staff WHERE StaffID ="'.$Delete.'"';
-
-mysql_select_db('leave_app');
-$retval = mysql_query($sql, $conn);
-if(! $retval)
-{
-	die('could not get data: '. mysql_error());
-}
-while ($rows = mysql_fetch_array($retval,MYSQL_ASSOC))
-{
-	echo "<b>Name : {$rows['StaffName']} </b><br><br>".
-	     "<b>IC number : {$rows['StaffIC']} </b><br><br>".
-		 "<b>Gender : {$rows['StaffGender']} </b><br><br>".
-		 "<b>Address : {$rows['StaffAddress']} </b><br><br>".
-		 "<b>Date Of Birth : {$rows['StaffDOB']} </b><br><br>".
-		 "<b>Phone No. : {$rows['StaffContactNo']} </b><br><br>".
-		 "<b>Email : {$rows['StaffEmail']} </b><br><br>";
-}
-mysql_close($conn);
-}
 
 ?>
 </center>

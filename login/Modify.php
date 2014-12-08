@@ -25,30 +25,39 @@
 <div id="Footer">
 </div>
 </div>
-<center>
-<h1>Staff Name</h1>
 <?php
 $dbuser="root";
 $dbpass = "";
 $dbhost = "localhost";
 $conn = mysql_connect($dbhost,$dbuser,$dbpass);
 
+
 if(! $conn)
 {
 	die('could not connect: '. mysql_error());
 }
-$sql = "SELECT * FROM staff";
-
-mysql_select_db('leave_app');
-$retval = mysql_query($sql,$conn);
-if(! $retval)
+if(isset($_GET['Modify']))
 {
-	die('could not get data: '. mysql_error());
+	$id = $_GET['Modify'];
+	$sql = mysql_query("SELECT * FROM staff");
+	$row = mysql_fetch_array($sql);
 }
-while ($row = mysql_fetch_array($retval))
-echo "$row[StaffID]. $row[StaffName] <a href='modify.php? edit=$row[StaffID]'>Modify</a></br></br>";
-
+if(isset($_POST['inStaffName']))
+{
+	$inStaffName = $_POST['inStaffName'];
+	$StaffID = $_POST['StaffID'];
+	$sql = "UPDATE staff SET StaffName='$inStaffName' WHERE StaffID='$StaffID'";
+	$res = mysql_query($sql) or die ("could not update".mysql_error());
+	echo "<meta http-equiv='refresh' content='0;url=delete.php'>";
+}
+mysql_select_db('leave_app');
 ?>
-</center>
-</body>
-</div>
+<center>
+<h1>modify</h1>
+<form action="Modify.php" method="post">
+	Name :<input type="text" name="inStaffName" value="<?php echo $row['StaffName']; ?>"/></br></br>
+    <input type="hidden" name="StaffID" value="<?php echo $row['StaffID']; ?>"/></br></br>
+    <input type="Submit" value="Modify"/>
+</form>
+<center>
+<?php
