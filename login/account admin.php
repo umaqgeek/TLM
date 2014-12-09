@@ -32,8 +32,7 @@
 
 <a href="view.php"><input type="submit" value="View Staff"/><br><br>
 <a href="add.php"><input type="submit" value="Add Staff"/><br><br>
-<a href="delete.php"><input type="submit" value="Delete Staff"/><br><br>
-<input type="submit" value="Update Staff"/><br><br>
+<a href="delete.php"><input type="submit" value="Update / Delete Staff"/><br><br>
 <input type="submit" value="Change Password"/><br><br>
 
 <a href="logout.php"><input name="Log Out" type="button" value="Log Out"></a>

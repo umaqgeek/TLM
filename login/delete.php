@@ -46,7 +46,7 @@ if(! $retval)
 	die('could not get data: '. mysql_error());
 }
 while ($row = mysql_fetch_array($retval))
-echo "$row[StaffID]. $row[StaffName] <a href='modify.php? edit=$row[StaffID]'>Modify</a></br></br>";
+echo "$row[StaffID]. $row[StaffName] <a href='Modify.php? Modify=$row[StaffID]'>Modify</a><span>   </span><span>   </span><a href='ConfirmDelete.php? Modify=$row[StaffID]'>Delete</a><br><br>";
 
 ?>
 </center>

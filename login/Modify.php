@@ -29,35 +29,43 @@
 $dbuser="root";
 $dbpass = "";
 $dbhost = "localhost";
-$conn = mysql_connect($dbhost,$dbuser,$dbpass);
+$db = "leave_app";
+mysql_connect($dbhost,$dbuser,$dbpass);
+mysql_select_db($db);
 
 
-if(! $conn)
-{
-	die('could not connect: '. mysql_error());
-}
 if(isset($_GET['Modify']))
 {
 	$id = $_GET['Modify'];
-	$sql = mysql_query("SELECT * FROM staff");
+	$sql = mysql_query("SELECT * FROM staff WHERE StaffID= $id");
 	$row = mysql_fetch_array($sql);
 }
-if(isset($_POST['inStaffName']))
-{
-	$inStaffName = $_POST['inStaffName'];
-	$StaffID = $_POST['StaffID'];
-	$sql = "UPDATE staff SET StaffName='$inStaffName' WHERE StaffID='$StaffID'";
-	$res = mysql_query($sql) or die ("could not update".mysql_error());
-	echo "<meta http-equiv='refresh' content='0;url=delete.php'>";
-}
-mysql_select_db('leave_app');
+
 ?>
 <center>
-<h1>modify</h1>
-<form action="Modify.php" method="post">
-	Name :<input type="text" name="inStaffName" value="<?php echo $row['StaffName']; ?>"/></br></br>
-    <input type="hidden" name="StaffID" value="<?php echo $row['StaffID']; ?>"/></br></br>
-    <input type="Submit" value="Modify"/>
+<h1>Modify</h1>
+<form action="Modify.php" method="POST">
+<table border="0" width="400">
+<tr><td><b>Name:</b></td><td> <input size="50" type="text" name="StaffName" value="<?php echo $row['StaffName'];?>"/></td></tr>
+<tr><td><b>IC Number:</b></td><td> <input size="50" type="text" name="StaffIC" value="<?php echo $row['StaffIC'];?>"/></td></tr>
+<tr><td><b>Date of Born:</b></td><td> <input size="50" type="date" name="StaffDOB" value="<?php echo $row['StaffDOB'];?>"/></td></tr>
+<tr><td><b>Gender:</b></td><td> <input size="50" type="text" name="StaffGender" value="<?php echo $row['StaffGender'];?>"/></td></tr>
+<tr><td><b>Address:</b></td><td> <input size="50" type="text" name="StaffAddress" value="<?php echo $row['StaffAddress'];?>"/></td></tr>
+<tr><td><b>Phone No. :</b></td><td> <input size="50" type="text" name="StaffContactNo" value="<?php echo $row['StaffContactNo'];?>"/></td></tr>
+<tr><td><b>Email:</b></td><td> <input size="50" type="text" name="StaffEmail" value="<?php echo $row['StaffEmail'];?>"/></td></tr>
+<tr><td></td><td> <input  type="hidden" name="ID" value="<?php echo $id;?>"/></td></tr>
+
+</table><br /><tr><td colspan="2"><center>
+<input type="submit" name="submit" value="Modify"/></center></td></tr>
 </form>
 <center>
 <?php
+if(isset($_POST['submit']))
+{
+
+	$sql = "UPDATE staff SET StaffName='$_POST[StaffName]',StaffIC='$_POST[StaffIC]',StaffDOB='$_POST[StaffDOB]',StaffGender='$_POST[StaffGender]',StaffAddress='$_POST[StaffAddress]',StaffContactNo='$_POST[StaffContactNo]',StaffEmail='$_POST[StaffEmail]' WHERE StaffID= $_POST[ID]";
+	$res = mysql_query($sql) or die ("could not update".mysql_error());
+	echo "Staff Has Been Modified";
+	Header("Location:delete.php");
+}
+?>
