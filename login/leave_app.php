@@ -27,28 +27,17 @@ include("config.php");
 </div>
 </div>
 <center>
-<table width="400" height="2" border="0" align="center" >
-<tr>
-<td><center><input type="submit" value="JAN"/></center></td><td><center><h1>2014</h1></center></td><td><center><input type="submit" value="FEB"/></center></td></tr>
-</table>
-</center>
-<table width="400" height="350" border="2" align="center" >
-<tr>
-<td width="50"><center><b>SUN</b></center></td><td width="50"><center><b>MON</b></center></td><td width="50"><center><b>TUE</b></center></td><td width="50"><center><b>WED</b></center></td><td width="50"><center><b>THU</b></center></td><td width="50"><center><b>FRI</b></center></td><td width="50"><center><b>SAT</b></center></td></tr>
-<tr>
-<td><center>29</center></td><td><center>30</center></td><td><center>31</center></td><td><center>1</center></td><td><center>2</center></td><td><center>3</center></td><td><center>4</center></td></tr>
-<tr>
-<td><center>5</center></td><td><center>6</center></td><td><center>7</center></td><td><center>8</center></td><td><center>9</center></td><td><center>10</center></td><td><center>11</center></td></tr>
-<tr>
-<td><center>12</center></td><td><center>13</center></td><td><center>14</center></td>
-<td><center>15</center></td><td><center>16</center></td><td><center>17</center></td><td><center>18</center></td></tr>
-<tr>
-<td><center>19</center></td><td><center>20</center></td><td><center>21</center></td>
-<td><center>22</center></td><td><center>23</center></td><td><center>24</center></td><td><center>25</center></td></tr>
-<tr>
-<td><center>26</center></td><td><center>27</center></td><td><center>28</center></td>
-<td><center>29</center></td><td><center>30</center></td><td><center>31</center></td><td><center>1</center></td></tr>
-</table></br>
+<h1>Add Staff</h1>
+<form action="LeaveSubmit.php" method="POST">
+<table border="0" width="500">
+<tr><td><b>Name:</b></td><td><input name="StaffName" type="text" value="" size="50"><br></td></tr>
+<tr><td><b>Leave date (From):</b></td><td><input name="LeaveFromDt" type="date" value="" size="50"><br></td></tr>
+<tr><td><b>Leave date (To):</b></td><td> <input size="50" type="date" name="LeaveToDt"/><br></td></tr>
+<tr><td><b>Note:</b> </td><td><input height="40" size="50" type="text" name="Note"/><br></td></tr>
+
+</table><br /><tr><td colspan="2"><center>
+<input type="submit" value="submit"/></center></td></tr>
+</form>
 </center>
 </body>
 </html>
