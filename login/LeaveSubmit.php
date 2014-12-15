@@ -1,10 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+<?php
+include("config.php");
+
+?>
+<body background="blur.jpg">
 <link href="Layout.css" rel="stylesheet" type="text/css" />
 <link href="Menu.css" rel="stylesheet" type="text/css" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
 </head>
 
 <body m background="blur.jpg">
@@ -13,11 +14,11 @@
 <div id="Navbar"></div>
 <nav>
 <ul>
-    <li><img src="tuffah1.jpg" width="180" height="60" /></li>
-	<li><b><a href="profile admin.php">Profile</a></b></li>
-    <li><b><a href="leave application admin.php">Leave application</a></b></li>
-    <li><b><a href="leave History.php">Leave history</a></b></li>
-    <li><b><a href="account admin.php">Account</a></b></li>
+    <li><a href="main menu.php"><img src="tuffah1.jpg" width="180" height="60" /></li>
+	<li><b><a href="profile.php">Profile</a></b></li>
+    <li><b><a href="leave_app.php">Leave application</a></b></li>
+    <li><b><a href="LeaveStatus.php">leave status</a></b></li>
+    <li><b><a href="account.php">Account</a></b></li>
 
 </ul>
 </nav>
@@ -38,11 +39,10 @@ if(! $conn)
 }
 $LeaveFromDt = $_POST['LeaveFromDt'];
 $LeaveToDt = $_POST['LeaveToDt'];
-$StaffName = $_POST['StaffName'];
 $Note = $_POST['Note'];
 
 
-$sql = "INSERT INTO leave ( LeaveFromDt, LeaveToDt, StaffName, Note) VALUES('$LeaveFromDt','$LeaveToDt','$StaffName','$Note')";
+$sql = "INSERT INTO leave1 ( LeaveFromDt, LeaveToDt, Note) VALUES('$LeaveFromDt','$LeaveToDt','$Note')";
 
 mysql_select_db('leave_app');
 $retval = mysql_query($sql, $conn);
@@ -56,6 +56,6 @@ else{
 }
 ?>
 <br /><br />
-<a href="account admin.php"><input type="submit" value="Back"/></a>
+<a href="account.php"><input type="submit" value="Back"/></a>
 
 </center>

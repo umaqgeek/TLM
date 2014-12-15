@@ -27,10 +27,9 @@ include("config.php");
 </div>
 </div>
 <center>
-<h1>Add Staff</h1>
+<h1>Leave Application</h1>
 <form action="LeaveSubmit.php" method="POST">
 <table border="0" width="500">
-<tr><td><b>Name:</b></td><td><input name="StaffName" type="text" value="" size="50"><br></td></tr>
 <tr><td><b>Leave date (From):</b></td><td><input name="LeaveFromDt" type="date" value="" size="50"><br></td></tr>
 <tr><td><b>Leave date (To):</b></td><td> <input size="50" type="date" name="LeaveToDt"/><br></td></tr>
 <tr><td><b>Note:</b> </td><td><input height="40" size="50" type="text" name="Note"/><br></td></tr>

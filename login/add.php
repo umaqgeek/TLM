@@ -31,7 +31,7 @@
 <table border="0" width="400">
 <tr><td><b>Name:</b></td><td> <input size="50" type="text" name="StaffName"/></td></tr>
 <tr><td><b>IC No. :</b></td><td> <input size="50" type="text" name="StaffIC"/></td></tr>
-<tr><td><b>Date of Birth:</b></td><td> <input size="50" type="text" name="StaffDOB"/></td></tr>
+<tr><td><b>Date of Birth:</b></td><td> <input size="50" type="date" name="StaffDOB"/></td></tr>
 <tr><td><b>Gender:</b></td><td> <input size="50" type="text" name="StaffGender"/></td></tr>
 <tr><td><b>Address:</b> </td><td><input size="50" type="text" name="StaffAddress"/></td></tr>
 <tr><td><b>Phone no.:</b> </td><td><input size="50" type="text" name="StaffContactNo"/></td></tr>

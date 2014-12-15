@@ -27,19 +27,27 @@
 </div>
 <center>
 <h1>Leave application</h1></center>
-<table width="568" height="230" border="3" align="center" >
-<tr><td colspan="3"><center>Staff Name</center></td></tr>
-<tr><td>Leave Type</td><td>:</td><td>Leave Type</td></tr>
-<tr><td>Leave requested</td><td>:</td><td>Leave requested (days)</td></tr>
-<tr><td>Leave Date</td><td>:</td><td>From: DateTime   To: DateTime</td></tr>
-<tr><td>Note</td><td>:</td><td>Note</td></tr>
-</table><br />
+<?php
+$dbuser="root";
+$dbpass = "";
+$dbhost = "localhost";
+$conn = mysql_connect($dbhost,$dbuser,$dbpass);
+mysql_select_db('leave_app');
+
+if(! $conn)
+{
+	die('could not connect: '. mysql_error());
+}
+{
+	$sql = mysql_query("SELECT * FROM leave1");
+	$rows = mysql_fetch_array($sql);
+}
+?>
 <center>
-<table width="200" height="3" border="0" align="center" >
-<tr><td><input name="Approve" type="checkbox" value="Approve" /><b>Approve</b></td>
-<td><input name="Decline" type="checkbox" value="Decline" /><b>Decline</b></td></tr>
-<tr><td colspan="2"><br />
-<center><input name="Confirm" type="button" value="Confirm" /></center>
-</td></tr>
-</table>
+<table width="500" border="1">
+	<tr><td>name</td><td>Leave Start</td><td>Leave End</td><td>Note</td></td><td>Status</td></tr>
+	<tr><td><?php echo $rows['StaffName'];?></td><td><?php echo $rows['LeaveFromDt'];?></td><td><?php echo $rows['LeaveToDt'];?></td><td><?php echo $rows['Note'];?></td><td><input type="checkbox"></td></tr>
+    
+    </table><br />
+     <input type="button" value="Approve"><span>    </span><input type="button" value="Decline">
 </center>
