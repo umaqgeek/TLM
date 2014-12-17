@@ -1,22 +1,33 @@
-<?php
+	<?php
 include("config.php");
 
 if (isset($_POST['StaffUsername'])){
 $StaffUsername = $_POST['StaffUsername'];
 $StaffPassword = $_POST['StaffPassword'];
 
-$sql = "SELECT * FROM staff WHERE StaffUsername='".$StaffUsername."' AND StaffPassword='".$StaffPassword."'LIMIT 1";
+	if ($StaffUsername != ''&& $StaffPassword !=''){
+	
+	$sql = "SELECT * FROM staff WHERE StaffUsername='".$StaffUsername."' AND StaffPassword='".$StaffPassword."'LIMIT 1";
 
-$res = mysql_query($sql);
+	$res = mysql_query($sql);
+	$row = mysql_fetch_array($res, MYSQL_ASSOC);
 
-if (mysql_num_rows($res) == 1){
-	$_SESSION['auth']= true;
-	Header ("Location: main menu.php");
-	exit();
-}
+		if (mysql_num_rows($res) == 1){
+		$_SESSION['StaffType']=$row['StaffType'];
+	
+			if ($_SESSION['StaffType']=='admin'){
+			Header ("Location: admin.php");
+			exit();
+			}
+			else{
+			Header ("Location: main menu.php");
+			exit();
+			}}
+	else{
+	echo "login fail";
+}}
 else{
-	echo "invalid login information";
-	exit();
+	echo "login fail";
 }}
 ?>
 <link rel="stylesheet" type="text/css" href="style.css">

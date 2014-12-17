@@ -33,6 +33,7 @@ include("config.php");
 <tr><td><b>Leave date (From):</b></td><td><input name="LeaveFromDt" type="date" value="" size="50"><br></td></tr>
 <tr><td><b>Leave date (To):</b></td><td> <input size="50" type="date" name="LeaveToDt"/><br></td></tr>
 <tr><td><b>Note:</b> </td><td><input height="40" size="50" type="text" name="Note"/><br></td></tr>
+<input type="hidden" name="Status" value="pending"/>
 
 </table><br /><tr><td colspan="2"><center>
 <input type="submit" value="submit"/></center></td></tr>

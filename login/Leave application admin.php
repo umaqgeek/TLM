@@ -27,27 +27,50 @@
 </div>
 <center>
 <h1>Leave application</h1></center>
+
+<center>
+<table width="900" border="1" rules="all" >
+	<tr>
+	<th>No</th>
+    <th>Name</th>
+    <th>Leave Start</th>
+    <th>Leave End</th>
+    <th>Note</th>
+    <th>Status</th>
+    <th>Action</th>
+    
+    </tr>
+ 
 <?php
 $dbuser="root";
 $dbpass = "";
 $dbhost = "localhost";
 $conn = mysql_connect($dbhost,$dbuser,$dbpass);
-mysql_select_db('leave_app');
 
 if(! $conn)
 {
 	die('could not connect: '. mysql_error());
 }
+$sql = "SELECT * FROM leave1";
+
+mysql_select_db('leave_app');
+$retval = mysql_query($sql,$conn);
+if(! $retval)
 {
-	$sql = mysql_query("SELECT * FROM leave1");
-	$rows = mysql_fetch_array($sql);
+	die('could not get data: '. mysql_error());
 }
+$i=1;
+while ($res = mysql_fetch_array($retval))
+{
+	 echo "<tr>";
+	 echo "<td align='center'>".$i."</td>";
+	 echo "<td align='center'>".$res['StaffName']."</td>";
+	 echo "<td align='center'>".$res['LeaveFromDt']."</td>";
+	 echo "<td align='center'>".$res['LeaveToDt']."</td>";
+	 echo "<td align='center'>".$res['Note']."</td>";
+	 echo "<td align='center'>".$res['LeaveStatus']."</td>";
+	 echo "<td align='center'><a href='ApproveLeave.php?status=$res[LeaveID]'>Approve</a><span>  </span><a href='DeleteLeave.php?Delete=$res[LeaveID]'>Delete</a></td><br>";
+	 $i++;
+ }
 ?>
-<center>
-<table width="500" border="1">
-	<tr><td>name</td><td>Leave Start</td><td>Leave End</td><td>Note</td></td><td>Status</td></tr>
-	<tr><td><?php echo $rows['StaffName'];?></td><td><?php echo $rows['LeaveFromDt'];?></td><td><?php echo $rows['LeaveToDt'];?></td><td><?php echo $rows['Note'];?></td><td><input type="checkbox"></td></tr>
-    
-    </table><br />
-     <input type="button" value="Approve"><span>    </span><input type="button" value="Decline">
 </center>

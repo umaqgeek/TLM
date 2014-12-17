@@ -26,29 +26,46 @@
 </div>
 </div>
 <center>
-<table width="400" height="3" border="2" align="center" >
-<tr><td>Name</td><td>:</td><td>Staff Name</td></tr>
-<tr><td>From date</td><td>:</td><td>date</td></tr>
-<tr><td>To date</td><td>:</td><td>date</td></tr>
-<tr><td>Status</td><td>:</td><td>Approved</td></tr>
-<tr><td>Status</td><td>:</td><td>Date Approved</td></tr>
-</table><br />
-</center>
-<center>
-<table width="400" height="3" border="2" align="center" >
-<tr><td>Name</td><td>:</td><td>Staff Name</td></tr>
-<tr><td>From date</td><td>:</td><td>date</td></tr>
-<tr><td>To date</td><td>:</td><td>date</td></tr>
-<tr><td>Status</td><td>:</td><td>Declined</td></tr>
-<tr><td>Status</td><td>:</td><td>Date Approved</td></tr>
-</table><br />
-</center>
-<center>
-<table width="400" height="3" border="2" align="center" >
-<tr><td>Name</td><td>:</td><td>Staff Name</td></tr>
-<tr><td>From date</td><td>:</td><td>date</td></tr>
-<tr><td>To date</td><td>:</td><td>date</td></tr>
-<tr><td>Status</td><td>:</td><td>Approved</td></tr>
-<tr><td>Status</td><td>:</td><td>Date Approved</td></tr>
-</table>
+<h1>Approved Application</h1>
+<table width="800" border="1" rules="all" >
+	<tr>
+	<th>No</th>
+    <th>Name</th>
+    <th>Leave Start</th>
+    <th>Leave End</th>
+    <th>Note</th>
+    <th>Status</th>
+    
+    </tr>
+<?php
+$dbuser="root";
+$dbpass = "";
+$dbhost = "localhost";
+$conn = mysql_connect($dbhost,$dbuser,$dbpass);
+
+if(! $conn)
+{
+	die('could not connect: '. mysql_error());
+}
+$sql = "SELECT * FROM leave1 WHERE LeaveStatus = 'Approved'";
+
+mysql_select_db('leave_app');
+$retval = mysql_query($sql,$conn);
+if(! $retval)
+{
+	die('could not get data: '. mysql_error());
+}
+$i=1;
+while ($res = mysql_fetch_array($retval))
+{
+	 echo "<tr>";
+	 echo "<td align='center'>".$i."</td>";
+	 echo "<td align='center'>".$res['StaffName']."</td>";
+	 echo "<td align='center'>".$res['LeaveFromDt']."</td>";
+	 echo "<td align='center'>".$res['LeaveToDt']."</td>";
+	 echo "<td align='center'>".$res['Note']."</td>";
+	 echo "<td align='center'>".$res['LeaveStatus']."</td>";
+	 $i++;
+ }
+?>
 </center>

@@ -39,10 +39,11 @@ if(! $conn)
 }
 $LeaveFromDt = $_POST['LeaveFromDt'];
 $LeaveToDt = $_POST['LeaveToDt'];
+$Status = $_POST['Status'];
 $Note = $_POST['Note'];
 
 
-$sql = "INSERT INTO leave1 ( LeaveFromDt, LeaveToDt, Note) VALUES('$LeaveFromDt','$LeaveToDt','$Note')";
+$sql = "INSERT INTO leave1 ( LeaveFromDt, LeaveToDt, LeaveStatus, Note) VALUES('$LeaveFromDt','$LeaveToDt','$Status','$Note')";
 
 mysql_select_db('leave_app');
 $retval = mysql_query($sql, $conn);
@@ -56,6 +57,6 @@ else{
 }
 ?>
 <br /><br />
-<a href="account.php"><input type="submit" value="Back"/></a>
+<a href="leave_app.php"><input type="submit" value="Back"/></a>
 
 </center>

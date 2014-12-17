@@ -30,23 +30,23 @@ CREATE TABLE `gender` (
 
 insert  into `gender`(`GenderID`,`GenderType`) values (1,'male'),(2,'female');
 
-/*Table structure for table `leave` */
+/*Table structure for table `leave1` */
 
-DROP TABLE IF EXISTS `leave`;
+DROP TABLE IF EXISTS `leave1`;
 
-CREATE TABLE `leave` (
+CREATE TABLE `leave1` (
   `LeaveID` int(11) NOT NULL AUTO_INCREMENT,
-  `leaveType` varchar(50) DEFAULT NULL,
   `LeaveFromDt` date DEFAULT NULL,
   `LeaveToDt` date DEFAULT NULL,
-  `LeaveStatus` int(11) DEFAULT NULL,
+  `LeaveStatus` varchar(11) DEFAULT NULL,
   `StaffName` int(11) DEFAULT NULL,
-  `ApprovedDt` datetime DEFAULT NULL,
   `Note` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`LeaveID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
-/*Data for the table `leave` */
+/*Data for the table `leave1` */
+
+insert  into `leave1`(`LeaveID`,`LeaveFromDt`,`LeaveToDt`,`LeaveStatus`,`StaffName`,`Note`) values (7,'2014-12-24','2014-12-26','Approved',NULL,'mawi world!!!');
 
 /*Table structure for table `leavestatus` */
 
@@ -61,18 +61,6 @@ CREATE TABLE `leavestatus` (
 /*Data for the table `leavestatus` */
 
 insert  into `leavestatus`(`LeaveStatusID`,`LeaveStatus`) values (1,'approved'),(2,'not approved'),(3,'cancelled');
-
-/*Table structure for table `leavetype` */
-
-DROP TABLE IF EXISTS `leavetype`;
-
-CREATE TABLE `leavetype` (
-  `LeaveTypeID` int(11) NOT NULL AUTO_INCREMENT,
-  `LeaveType` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`LeaveTypeID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-/*Data for the table `leavetype` */
 
 /*Table structure for table `staff` */
 
@@ -97,7 +85,7 @@ CREATE TABLE `staff` (
 
 /*Data for the table `staff` */
 
-insert  into `staff`(`StaffID`,`StaffName`,`StaffIC`,`StaffDOB`,`StaffGender`,`StaffAddress`,`StaffContactNo`,`StaffEmail`,`StaffType`,`StaffUsername`,`StaffPassword`,`Year`,`LeaveBal`) values (1,'Mohamad Ezwan Bin Mohd Shahrin','941227015915','1994-12-27','male','No.28, Kg Seri Maju Jaya, Batu Pahat, Johor','+6014-6241620','Ezwanshahrin@gmail.com','admin','ezwan','ezwan123',NULL,NULL),(2,'kamarul','941020015897','1994-10-20','male','MLO 2800, Kg Baru Sedenak, 81010, Kulai, johor','+6017-7499736','kamarulrizam94@gmail.com','staff','mawi','mawi123',NULL,NULL);
+insert  into `staff`(`StaffID`,`StaffName`,`StaffIC`,`StaffDOB`,`StaffGender`,`StaffAddress`,`StaffContactNo`,`StaffEmail`,`StaffType`,`StaffUsername`,`StaffPassword`,`Year`,`LeaveBal`) values (1,'Mohamad Ezwan Bin Mohd Shahrin','941227015915','1994-12-27','male','No.28, Kg Seri Maju Jaya, Batu Pahat, Johor','+6014-6241620','Ezwanshahrin@gmail.com','admin','ezwan','ezwan123',NULL,NULL),(2,'mawi','','0000-00-00','','','','','staff','mawi','mawi123',NULL,NULL);
 
 /*Table structure for table `stafftype` */
 
