@@ -1,6 +1,16 @@
 <?php
-include("config.php");
+session_start();
+$dbuser="root";
+$dbpass = "";
+$dbhost = "localhost";
+$conn = mysql_connect($dbhost,$dbuser,$dbpass);
 
+if(! $conn)
+{
+	die('could not connect: '. mysql_error());
+}
+$id = $_SESSION['StaffID'];
+$name = $_SESSION['StaffName'];
 ?>
 <link href="Layout.css" rel="stylesheet" type="text/css" />
 <link href="Menu.css" rel="stylesheet" type="text/css" />
@@ -31,7 +41,7 @@ include("config.php");
 <fieldset style="width:120% " >
 <legend><h1>My Account</h1></legend></br>
 
-<input type="submit" value="Change Password"/><br><br>
+<b><a href="ChangePswd.php"><input type="submit" value="Change Password"/><br><br>
 
 <b><a href="logout.php"><input name="Log Out" type="button" value="Log Out"></a>
 

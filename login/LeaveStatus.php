@@ -1,6 +1,3 @@
-<?php
-include("config.php");
-?>
 <link href="Layout.css" rel="stylesheet" type="text/css" />
 <link href="Menu.css" rel="stylesheet" type="text/css" />
 
@@ -27,12 +24,43 @@ include("config.php");
 </div>
 <center>
 <h1> leave status</h1>
-</body>
-</html>
-<table width="400" height="3" border="2" align="center" >
-<tr><td>Name</td><td>:</td><td>Staff Name</td></tr>
-<tr><td>From date</td><td>:</td><td>date</td></tr>
-<tr><td>To date</td><td>:</td><td>date</td></tr>
-<tr><td>Status</td><td>:</td><td>Approved</td></tr>
-</table>
+<table width="800" border="2" rules="all" >
+	<tr>
+	<th>No</th>
+    <th>Leave Start</th>
+    <th>Leave End</th>
+    <th>Note</th>
+    <th>Status</th>
+    
+    </tr>
+
+<?php
+session_start();
+$dbuser="root";
+$dbpass = "";
+$dbhost = "localhost";
+$conn = mysql_connect($dbhost,$dbuser,$dbpass);
+
+$id = $_SESSION['StaffID'];
+$name = $_SESSION['StaffName'];
+$sql = "SELECT * FROM leave1 WHERE StaffName = '$name'";
+
+mysql_select_db('leave_app');
+$retval = mysql_query($sql, $conn);
+if(! $retval)
+{
+	die('could not get data: '. mysql_error());
+}
+$i=1;
+while ($res = mysql_fetch_array($retval))
+{
+	 echo "<tr>";
+	 echo "<td align='center'>".$i."</td>";
+	 echo "<td align='center'>".$res['LeaveFromDt']."</td>";
+	 echo "<td align='center'>".$res['LeaveToDt']."</td>";
+	 echo "<td align='center'>".$res['Note']."</td>";
+	 echo "<td align='center'>".$res['LeaveStatus']."</td>";
+	 $i++;
+ }
+?>
 </center>

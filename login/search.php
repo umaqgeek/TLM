@@ -25,36 +25,25 @@
 </div>
 </div>
 <center>
-<form action="search.php" method="POST">
-    <b>Staff ID:</b> <input type="text" name="StaffID"/></br></br>
-    <centre>
-<input type="submit" value="Search"/>
-</form>
-</center>
-
-<center>
+<h1>Staff Profile</h1><br><br>
 <?php
 $dbuser="root";
 $dbpass = "";
 $dbhost = "localhost";
-$conn = mysql_connect($dbhost,$dbuser,$dbpass);
+$db = "leave_app";
+mysql_connect($dbhost,$dbuser,$dbpass);
+mysql_select_db($db);
 
-if(! $conn)
 
+if(isset($_GET['search']))
 {
-	die('could not connect: '. mysql_error());
-}
-if (isset($_POST['StaffID'])){
-$StaffUsername = $_POST['StaffID'];
-$sql = 'SELECT StaffName, StaffIC, StaffGender, StaffAddress, StaffDOB, StaffContactNo, StaffEmail FROM staff WHERE StaffID ="'.$StaffUsername.'"';
+	$id = $_GET['search'];
+	$sql = mysql_query("SELECT * FROM staff WHERE StaffID= $id");
+    $is = mysql_fetch_array($sql);
 
 mysql_select_db('leave_app');
-$retval = mysql_query($sql, $conn);
-if(! $retval)
-{
-	die('could not get data: '. mysql_error());
-}
-while ($rows = mysql_fetch_array($retval,MYSQL_ASSOC))
+
+if ($rows = $is)
 {
 	echo "<b>Name : {$rows['StaffName']} </b><br><br>".
 	     "<b>IC number : {$rows['StaffIC']} </b><br><br>".
@@ -64,7 +53,7 @@ while ($rows = mysql_fetch_array($retval,MYSQL_ASSOC))
 		 "<b>Phone No. : {$rows['StaffContactNo']} </b><br><br>".
 		 "<b>Email : {$rows['StaffEmail']} </b><br><br>";
 }
-mysql_close($conn);
+
 }
 ?>
 </center>

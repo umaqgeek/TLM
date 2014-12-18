@@ -32,6 +32,7 @@
 <legend><h1>My Profile</h1></legend></br>
 
 <?php
+session_start();
 $dbuser="root";
 $dbpass = "";
 $dbhost = "localhost";
@@ -41,7 +42,9 @@ if(! $conn)
 {
 	die('could not connect: '. mysql_error());
 }
-$sql = 'SELECT StaffName, StaffIC, StaffGender, StaffAddress, StaffDOB, StaffContactNo, StaffEmail FROM staff WHERE StaffID = "2"';
+$id = $_SESSION['StaffID'];
+$name = $_SESSION['StaffName'];
+$sql = "SELECT StaffName, StaffIC, StaffGender, StaffAddress, StaffDOB, StaffContactNo, StaffEmail FROM staff WHERE StaffID = $id";
 
 mysql_select_db('leave_app');
 $retval = mysql_query($sql, $conn);

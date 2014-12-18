@@ -1,6 +1,16 @@
 <?php
-include("config.php");
+session_start();
+$dbuser="root";
+$dbpass = "";
+$dbhost = "localhost";
+$conn = mysql_connect($dbhost,$dbuser,$dbpass);
 
+if(! $conn)
+{
+	die('could not connect: '. mysql_error());
+}
+$id = $_SESSION['StaffID'];
+$name = $_SESSION['StaffName'];
 ?>
 <body background="blur.jpg">
 <link href="Layout.css" rel="stylesheet" type="text/css" />
@@ -33,6 +43,7 @@ include("config.php");
 <tr><td><b>Leave date (From):</b></td><td><input name="LeaveFromDt" type="date" value="" size="50"><br></td></tr>
 <tr><td><b>Leave date (To):</b></td><td> <input size="50" type="date" name="LeaveToDt"/><br></td></tr>
 <tr><td><b>Note:</b> </td><td><input height="40" size="50" type="text" name="Note"/><br></td></tr>
+<input type="hidden" name="name" value="<?php echo $name;?>"/>
 <input type="hidden" name="Status" value="pending"/>
 
 </table><br /><tr><td colspan="2"><center>

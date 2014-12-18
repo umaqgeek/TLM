@@ -25,34 +25,43 @@
 <div id="Footer">
 </div>
 </div>
-<center>
-<h1>Staff Name</h1>
 <?php
+
 $dbuser="root";
 $dbpass = "";
 $dbhost = "localhost";
-$conn = mysql_connect($dbhost,$dbuser,$dbpass);
+$db = "leave_app";
+mysql_connect($dbhost,$dbuser,$dbpass);
+mysql_select_db($db);
 
-if(! $conn)
-{
-	die('could not connect: '. mysql_error());
-}
-$sql = "SELECT * FROM staff";
 
-mysql_select_db('leave_app');
-$retval = mysql_query($sql,$conn);
-if(! $retval)
-{
-	die('could not get data: '. mysql_error());
-}
-$i=1;
-while ($row = mysql_fetch_array($retval))
+	$sql = mysql_query("SELECT * FROM staff WHERE StaffType='admin'");
+	$res = mysql_fetch_array($sql);
+
+?>
+<center>
+<h1>Enter New Password</h1>
+<fieldset style="width:20%">
+<p><b>your old password = "<?php echo $res['StaffPassword'];?>"</b></p>
+</fieldset>
+</br>
+</br>
+<form action="ChangePswd.php" method="POST">
+<table border="0" width="400">
+<tr><td><b>New Password :</b></td><td> <input  type="password" name="newpass"/></td></tr>
+
+
+</table><br /><tr><td colspan="2"><center>
+<input type="submit" name="submit" value="submit"/></center></td></tr>
+</form>
+<center>
+<?php
+if(isset($_POST['submit']))
 {
 
-	echo "$i. $row[StaffName] <a href='search.php? search=$row[StaffID]'>View</a><br><br>";
-	$i++;
+	$sql = "UPDATE staff SET StaffPassword='$_POST[newpass]' WHERE StaffType='admin'";
+	$res = mysql_query($sql) or die ("could not update".mysql_error());
+	echo "Password has been Change";
+	Header("Location:account.php");
 }
 ?>
-</center>
-</body>
-</div>

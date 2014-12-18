@@ -47,10 +47,11 @@ $StaffType = $_POST['StaffType'];
 $StaffUsername = $_POST['StaffUsername'];
 $StaffPassword = $_POST['StaffPassword'];
 
+if ($StaffName != ''&& $StaffIC !=''&& $StaffDOB != ''&& $StaffGender !=''&& $StaffAddress != ''&& $StaffContactNo !=''&& $StaffEmail != ''&& $StaffType !=''&& $StaffUsername != ''&& $StaffPassword !=''){
 $sql = "INSERT INTO staff (StaffName,StaffIC,StaffDOB,StaffGender,StaffAddress,StaffContactNo,StaffEmail,StaffType, StaffUsername,StaffPassword) VALUES('$StaffName','$StaffIC','$StaffDOB','$StaffGender','$StaffAddress','$StaffContactNo','$StaffEmail','$StaffType','$StaffUsername','$StaffPassword')";
 
 mysql_select_db('leave_app');
-$retval = mysql_query($sql, $conn);
+$retval = mysql_query($sql, $conn) or die ("please fill the form");
 if($retval)
 {
 	echo "<b>SUCCESS!</b>";
@@ -58,6 +59,9 @@ if($retval)
 }
 else{
 	die('could not get data: '. mysql_error());;
+}}
+else{ 
+	echo "please fill the form";
 }
 ?>
 <br /><br />
