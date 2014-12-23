@@ -36,7 +36,7 @@
 <tr><td><b>Address:</b> </td><td><input size="50" type="text" name="StaffAddress"/></td></tr>
 <tr><td><b>Phone no.:</b> </td><td><input size="50" type="text" name="StaffContactNo"/></td></tr>
 <tr><td><b>Email:</b></td><td> <input size="50" type="text" name="StaffEmail"/></td></tr>
-<tr><td><b>type:</b></td><td> <input size="50" type="text" name="StaffType"/></td></tr>
+<tr><td><b>type:</b></td><td> <input name="StaffType" type="text" size="50" readonly="readonly" value="staff"/></td></tr>
 <tr><td><b>Username:</b> </td><td><input size="50" type="text" name="StaffUsername"/></td></tr>
 <tr><td><b>Password:</b> </td><td><input size="50" type="text" name="StaffPassword"/></td></tr>
 </table><br /><tr><td colspan="2"><center>

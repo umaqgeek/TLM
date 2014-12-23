@@ -42,22 +42,15 @@ $nn = $_POST['name'];
 if ($LeaveFromDt != ''&& $LeaveToDt !=''&& $Status != ''&& $Note !=''&& $nn != ''){
 $sql = "INSERT INTO leave1 ( LeaveFromDt, LeaveToDt, LeaveStatus, StaffName, Note) VALUES('$LeaveFromDt','$LeaveToDt','$Status','$nn','$Note')";
 
-$bal = "SELECT * FROM staff WHERE StaffName = '$nn'";
-$res = mysql_query($bal);
- 
 mysql_select_db('leave_app');
 
 $retval = mysql_query($sql, $conn);
 if($retval)
 {
-	$_SESSION['LeaveBal']= $res['LeaveBal'];
-	$LB=$_SESSION['LeaveBal'];
-	if ($LB<='14'){
+
 	echo "<b>SUCCESS!</b>";
+	
 	}
-	else{
-		echo "Your Leave Balance is over than 14";
-	}}
 else{
 	die('could not get data: '. mysql_error());
 }}

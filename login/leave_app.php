@@ -11,6 +11,16 @@ if(! $conn)
 }
 $id = $_SESSION['StaffID'];
 $name = $_SESSION['StaffName'];
+
+$sql = "SELECT LeaveBal FROM staff WHERE StaffID = $id";
+
+mysql_select_db('leave_app');
+$retval = mysql_query($sql, $conn);
+if(! $retval)
+{
+	die('could not get data: '. mysql_error());
+}
+$rows = mysql_fetch_array($retval,MYSQL_ASSOC);
 ?>
 <body background="blur.jpg">
 <link href="Layout.css" rel="stylesheet" type="text/css" />
@@ -38,6 +48,7 @@ $name = $_SESSION['StaffName'];
 </div>
 <center>
 <h1>Leave Application</h1>
+<?php echo "<b>Leave Balance : {$rows['LeaveBal']} </b><br><br>";?>
 <form action="LeaveSubmit.php" method="POST">
 <table border="0" width="500">
 <tr><td><b>Leave date (From):</b></td><td><input name="LeaveFromDt" type="date" value="" size="50"><br></td></tr>

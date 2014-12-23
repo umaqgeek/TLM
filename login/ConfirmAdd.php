@@ -47,7 +47,7 @@ $StaffType = $_POST['StaffType'];
 $StaffUsername = $_POST['StaffUsername'];
 $StaffPassword = $_POST['StaffPassword'];
 
-if ($StaffName != ''&& $StaffIC !=''&& $StaffDOB != ''&& $StaffGender !=''&& $StaffAddress != ''&& $StaffContactNo !=''&& $StaffEmail != ''&& $StaffType !=''&& $StaffUsername != ''&& $StaffPassword !=''){
+if ($StaffName != ''&& $StaffType !=''&& $StaffUsername != ''&& $StaffPassword !=''){
 $sql = "INSERT INTO staff (StaffName,StaffIC,StaffDOB,StaffGender,StaffAddress,StaffContactNo,StaffEmail,StaffType, StaffUsername,StaffPassword) VALUES('$StaffName','$StaffIC','$StaffDOB','$StaffGender','$StaffAddress','$StaffContactNo','$StaffEmail','$StaffType','$StaffUsername','$StaffPassword')";
 
 mysql_select_db('leave_app');
