@@ -38,9 +38,16 @@ $LeaveToDt = $_POST['LeaveToDt'];
 $Status = $_POST['Status'];
 $Note = $_POST['Note'];
 $nn = $_POST['name'];
+$id = $_POST['id'];
 
 if ($LeaveFromDt != ''&& $LeaveToDt !=''&& $Status != ''&& $Note !=''&& $nn != ''){
-$sql = "INSERT INTO leave1 ( LeaveFromDt, LeaveToDt, LeaveStatus, StaffName, Note) VALUES('$LeaveFromDt','$LeaveToDt','$Status','$nn','$Note')";
+	
+$date1=date_create("$LeaveFromDt");
+$date2=date_create("$LeaveToDt");
+$diff=date_diff($date1,$date2);
+$Leave = $diff->format("%a");
+$LeaveDay = $Leave + "1";
+$sql = "INSERT INTO leave1 ( LeaveFromDt, LeaveToDt, LeaveDay, LeaveStatus, StaffName, StaffID, Note) VALUES('$LeaveFromDt','$LeaveToDt','$LeaveDay','$Status','$nn', '$id', '$Note')";
 
 mysql_select_db('leave_app');
 

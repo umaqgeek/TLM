@@ -10,22 +10,25 @@ mysql_select_db($db);
 	mysql_query("UPDATE `leave_app`.`leave1`
 SET `LeaveStatus` = 'Approved'
 WHERE LeaveID = $id");
+	
+	$sah = "SELECT * FROM `leave_app`.`leave1` WHERE LeaveID = $id ";
+	$nama = mysql_query($sah);
+	$seq = mysql_fetch_array($nama);
+	$Sid = $seq['StaffID'];
+	$leaveday = $seq['LeaveDay'];
 
+	$sequel = "SELECT * FROM `leave_app`.`staff` WHERE StaffID = $Sid ";
+	$sa = mysql_query($sequel);
+	$query = mysql_fetch_array($sa);
+	$leavebal = $query['LeaveBal'];
+
+
+	$newlb = $leavebal - $leaveday ; //current leave balance
 	
-	$sql = mysql_query("SELECT * FROM leave1");
-	$res = mysql_fetch_array($sql);
-	$sd = $res['LeaveFromDt']; //leave start date
-	$ed = $res['LeaveToDt']; //leave end date
-	$lb = $res['Leavebal']; //leave balance
-	$lds = new DateTime($sd);
-	$lde = new DateTime($ed);
-	$ld = $lde-$lds ;  //calculating different
-	$newlb = $lb-$ld ; //current leave balance
-	
-	$submitBal = mysql_query("UPDATE `leave_app`.`staff`
+	$tambah = ("UPDATE `leave_app`.`staff`
 SET `LeaveBal` = '$newlb'
-WHERE LeaveID = $id");
-	
-		echo "Your Application has been Approved";
+WHERE StaffID = $Sid");
+    mysql_query($tambah);
+	echo "Your Application has been Approved";
 	Header("Location: Leave application admin.php");
 ?>

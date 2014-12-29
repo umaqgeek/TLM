@@ -55,6 +55,7 @@ $rows = mysql_fetch_array($retval,MYSQL_ASSOC);
 <tr><td><b>Leave date (To):</b></td><td> <input size="50" type="date" name="LeaveToDt"/><br></td></tr>
 <tr><td><b>Note:</b> </td><td><input height="40" size="50" type="text" name="Note"/><br></td></tr>
 <input type="hidden" name="name" value="<?php echo $name;?>"/>
+<input type="hidden" name="id" value="<?php echo $id;?>"/>
 <input type="hidden" name="Status" value="pending"/>
 
 </table><br /><tr><td colspan="2"><center>
