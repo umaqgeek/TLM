@@ -25,10 +25,12 @@ CREATE TABLE `leave1` (
   `LeaveFromDt` date DEFAULT NULL,
   `LeaveToDt` date DEFAULT NULL,
   `LeaveStatus` varchar(11) DEFAULT 'pending',
-  `StaffName` varchar(50) DEFAULT NULL,
+  `LeaveDay` int(11) DEFAULT NULL,
   `Note` varchar(50) DEFAULT NULL,
+  `StaffName` varchar(50) DEFAULT NULL,
+  `StaffID` int(11) DEFAULT NULL,
   PRIMARY KEY (`LeaveID`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `leave1` */
 
@@ -49,13 +51,13 @@ CREATE TABLE `staff` (
   `StaffUsername` varchar(20) DEFAULT NULL,
   `StaffPassword` varchar(20) DEFAULT NULL,
   `Year` int(4) DEFAULT NULL,
-  `LeaveBal` int(2) DEFAULT '0',
+  `LeaveBal` int(2) DEFAULT '14',
   PRIMARY KEY (`StaffID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `staff` */
 
-insert  into `staff`(`StaffID`,`StaffName`,`StaffIC`,`StaffDOB`,`StaffGender`,`StaffAddress`,`StaffContactNo`,`StaffEmail`,`StaffType`,`StaffUsername`,`StaffPassword`,`Year`,`LeaveBal`) values (1,'Mohamad Ezwan Bin Mohd Shahrin','941227015915','1994-12-27','male','No.28, Kg Seri Maju Jaya, Batu Pahat, Johor','+6014-6241620','Ezwanshahrin@gmail.com','admin','ezwan','ezwan123',NULL,1),(2,'Kamalrul Bin Rizam','941020015897','1994-10-20','male','MLO 2800, Kg Baru Sedenak, 81010, Kulai, johor','0177499736','kamarulrizam94@gmail.com','','mawi','mawi123',NULL,0);
+insert  into `staff`(`StaffID`,`StaffName`,`StaffIC`,`StaffDOB`,`StaffGender`,`StaffAddress`,`StaffContactNo`,`StaffEmail`,`StaffType`,`StaffUsername`,`StaffPassword`,`Year`,`LeaveBal`) values (1,'Mohamad Ezwan Bin Mohd Shahrin','941227015915','1994-12-27','male','No.28, Kg Seri Maju Jaya, Batu Pahat, Johor','+6014-6241620','Ezwanshahrin@gmail.com','admin','ezwan','ezwan123',2014,14),(2,'Kamalrul Bin Rizam','941020015897','1994-10-20','male','MLO 2800, Kg Baru Sedenak, 81010, Kulai, johor','0177499736','kamarulrizam94@gmail.com','staff','mawi','mawi123',2014,14),(3,'Nurdinie Bazli Bin Norasikin','','0000-00-00','','','','','staff','bazli','bazli123',2014,14);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
