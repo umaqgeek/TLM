@@ -9,5 +9,5 @@ mysql_select_db($db);
 	$id = $_GET['Modify'];
 	mysql_query("DELETE FROM staff WHERE StaffID= $id");
 	echo "The Staff Has Been Deleted";
-	Header("Location: delete.php");
+	Header("Location: update.php");
 ?>

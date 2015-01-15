@@ -30,5 +30,5 @@ SET `LeaveBal` = '$newlb'
 WHERE StaffID = $Sid");
     mysql_query($tambah);
 	echo "Your Application has been Approved";
-	Header("Location: Leave application admin.php");
+	Header("Location: leaveadd.php");
 ?>

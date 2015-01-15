@@ -18,8 +18,8 @@
 	<ul>
 		<li><a href="indexadd.php"><b>Profile</b></a></li>
 		<li><a href="Leaveadd.php"><b>Leave Application</b></a></li>
-		<li><a href="history.php"><b>History</b></a></li>
-		<li class="active"><a href="#"><b>Account</b></a></li>
+		<li class="active"><a href="history.php"><b>History</b></a></li>
+		<li><a href="accountadd.php"><b>Account</b></a></li>
 		<li><a href="logout.php"><b>Logout</b></a></li>
 	</ul>
 </div>
@@ -29,21 +29,24 @@
 			<h2 class="section"><b>Account</b></h2><br />
 				<h1>View Staff</h1><br />
 				<center>
-                 <table border="0">
+                                      <table border="0">
 						<tr>
-                        	<td><b><a href="AddStaff.php"><input id="searchsub" type="submit" value="Add Staff"/>
-              				</a></b></center></td>
+                        	<td><a href="history.php"><input id="searchsub" type="submit" value="Approved leave"/>
+                            </center></a></td>
                             <td></td><td></td>
-                        	<td><a href="view.php"><input id="sea" type="submit" value="View Staff"/>
-                            </a></center></td>
-                            <td></td><td></td>
-                        	<td><a href="update.php"><input id="searchsub" type="submit" value="Update Staff"/>
-                            </a></center></td>
-                            <td></td><td></td>
-                        	<td><a href="Change.php"><input id="searchsub" type="submit" value="Change Password"/>
+                        	<td><a href="stafff.php"><input id="sea" type="submit" value="Staff Leave"/>
                             </a></center></td>
                         </tr>
-                      </table><br/></center>
+                      </table>
+                      </center><br />
+                      <table width="600" border="2" rules="all" >
+                    <tr>
+                    <th>No</th>
+                    <th>Leave Start</th>
+                    <th>Leave End</th>
+                    <th>Note</th>
+                    <th>Status</th>
+                    </tr></center>
 <?php
 $dbuser="root";
 $dbpass = "";
@@ -56,25 +59,27 @@ mysql_select_db($db);
 if(isset($_GET['search']))
 {
 	$id = $_GET['search'];
-	$sql = mysql_query("SELECT * FROM staff WHERE StaffID= $id");
+	$sql = mysql_query("SELECT * FROM leave1 WHERE StaffID= $id AND LeaveStatus='Approved'");
     $is = mysql_fetch_array($sql);
 
 mysql_select_db('leave_app');
 
 if ($rows = $is)
 {
-	echo "<b>Name : {$rows['StaffName']} </b><br><br>".
-	     "<b>IC number : {$rows['StaffIC']} </b><br><br>".
-		 "<b>Gender : {$rows['StaffGender']} </b><br><br>".
-		 "<b>Address : {$rows['StaffAddress']} </b><br><br>".
-		 "<b>Date Of Birth : {$rows['StaffDOB']} </b><br><br>".
-		 "<b>Phone No. : {$rows['StaffContactNo']} </b><br><br>".
-		 "<b>Email : {$rows['StaffEmail']} </b><br><br>";
+	$i=1;
+	
+	 echo "<tr>";
+	 echo "<td align='center'>".$i."</td>";
+	 echo "<td align='center'>".$rows['LeaveFromDt']."</td>";
+	 echo "<td align='center'>".$rows['LeaveToDt']."</td>";
+	 echo "<td align='center'>".$rows['Note']."</td>";
+	 echo "<td align='center'>".$rows['LeaveStatus']."</td>";
+	 $i++;
 }
 
 }
-?><br /><center>
-<a href="view.php"><input id="searchsubmit" type="submit" value="Back"/></a></center>
+?></table><br /><center>
+<a href="stafff.php"><input id="searchsubmit" type="submit" value="Back"/></a></center>
                       
 			</div>
 		</div>

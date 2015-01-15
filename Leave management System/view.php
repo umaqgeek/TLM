@@ -1,32 +1,49 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<link href="Layout.css" rel="stylesheet" type="text/css" />
-<link href="Menu.css" rel="stylesheet" type="text/css" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="set.css" rel="stylesheet" type="text/css" />
 </head>
+<body>
+<div id="header">
+	<div id="logo">
+		<img src="images/title.png" width="500" height="90">
+	</div>
 
-<body m background="blur.jpg">
-<div id="Container">
-<div id="Head"></div>
-<div id="Navbar"></div>
-<nav>
-<ul>
-    <li><img src="tuffah1.jpg" width="180" height="60" /></li>
-	<li><b><a href="profile admin.php">Profile</a></b></li>
-    <li><b><a href="leave application admin.php">Leave application</a></b></li>
-    <li><b><a href="leave History.php">Leave history</a></b></li>
-    <li><b><a href="account admin.php">Account</a></b></li>
-
-</ul>
-</nav>
-<div id="Content"></div>
-<div id="Footer">
 </div>
+<div id="menu">
+	<ul>
+		<li><a href="indexadd.php"><b>Profile</b></a></li>
+		<li><a href="Leaveadd.php"><b>Leave Application</b></a></li>
+		<li><a href="history.php"><b>History</b></a></li>
+		<li class="active"><a href="#"><b>Account</b></a></li>
+		<li><a href="logout.php"><b>Logout</b></a></li>
+	</ul>
 </div>
-<center>
-<h1>Staff Name</h1>
+<div id="page">
+	<div id="content">
+		<div id="feature" class="box-orange">
+			<h2 class="section"><b>Account</b></h2><br />
+				<h1>View Staff</h1><br />
+				<center>
+                 <table border="0">
+						<tr>
+                        	<td><b><a href="AddStaff.php"><input id="searchsub" type="submit" value="Add Staff"/>
+              				</a></b></center></td>
+                            <td></td><td></td>
+                        	<td><a href="#"><input id="sea" type="submit" value="View Staff"/>
+                            </a></center></td>
+                            <td></td><td></td>
+                        	<td><a href="update.php"><input id="searchsub" type="submit" value="Update Staff"/>
+                            </a></center></td>
+                            <td></td><td></td>
+                        	<td><a href="Change.php"><input id="searchsub" type="submit" value="Change Password"/>
+                            </a></center></td>
+                        </tr>
+                      </table><br/></center>
 <?php
 $dbuser="root";
 $dbpass = "";
@@ -53,6 +70,33 @@ while ($row = mysql_fetch_array($retval))
 	$i++;
 }
 ?>
-</center>
-</body>
+                      
+			</div>
+		</div>
+	</div>
+    
+	<div id="sidebar" class="two-cols">
+    <img src="images/tuffah1.jpg" width="300"/><br /><br />
+		<div class="col-one">
+			<div class="box-pink">
+            	
+					<h2 class="section"><b>Tuffah Informatic</b></h2>
+					<div class="content"><center>
+                    	<a href="http://www.tuffah.info/">www.tuffah.info</a><br /><br />
+                        <a href="https://www.facebook.com/tuffah.informatic">Facebook</a><br /><br />
+                        <a href="http://www.tuffah.info/">bilal@tuffah.info</a><br /><br />
+                        <p>013-614 8106</p>
+                        
+                        </center>
+					</div>
+			</div>
+		</div>
+	</div>
+	<div style="clear: both;">&nbsp;</div>
 </div>
+<div id="footer">
+	<p id="legal">Copyright &copy; 2014 Simpletex. All Rights Reserved | Designed by <a href="https://www.facebook.com/ezwan.shahrin">Ezwan shahrin</a></p>
+	<p id="links"><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a> | <a href="http://validator.w3.org/check/referer" title="This page validates as XHTML 1.0 Transitional"><abbr title="eXtensible HyperText Markup Language">XHTML</abbr></a> | <a href="http://jigsaw.w3.org/css-validator/check/referer" title="This page validates as CSS"><abbr title="Cascading Style Sheets">CSS</abbr></a></p>
+</div>
+<div align=center><a href='http://all-free-download.com/free-website-templates/'>www.tuffah.info</a></div></body>
+</html>

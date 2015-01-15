@@ -1,6 +1,3 @@
-<body background="blur.jpg">
-<center>
-<p>
   <?php
 include("config.php");
 
@@ -21,7 +18,9 @@ $StaffPassword = $_POST['StaffPassword'];
 		$_SESSION['StaffType']=$row['StaffType'];
 	
 			if ($_SESSION['StaffType']=='admin'){
-			Header ("Location: admin.php");
+			$_SESSION['StaffID']=$row['StaffID'];
+			$_SESSION['StaffName']=$row['StaffName'];
+			Header ("Location: indexadd.php");
 			exit();
 			}
 
@@ -29,7 +28,7 @@ $StaffPassword = $_POST['StaffPassword'];
 				if($Today == $year){
 			$_SESSION['StaffID']=$row['StaffID'];
 			$_SESSION['StaffName']=$row['StaffName'];
-			Header ("Location: profile.php");
+			Header ("Location: index.php");
 			exit();
 				}
 				else{
@@ -37,15 +36,13 @@ $StaffPassword = $_POST['StaffPassword'];
 				$rus = mysql_query($query);
 			$_SESSION['StaffID']=$row['StaffID'];
 			$_SESSION['StaffName']=$row['StaffName'];
-			Header ("Location: profile.php");
+			Header ("Location: index.php");
 			exit();
 			}}}
 	else{
-	echo "login fail";
+	Header ("Location: loginfail.php");
 }}
 else{
-	echo "login fail";
+	Header ("Location: loginfail.php");
 }}
 ?>
-</center>
-</Body>

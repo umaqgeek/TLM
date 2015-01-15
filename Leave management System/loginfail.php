@@ -5,7 +5,7 @@
 <title></title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<link href="logins.css" rel="stylesheet" type="text/css" />
+<link href="logins2.css" rel="stylesheet" type="text/css" />
 </head>
 <body background="images/apples.jpg">
 <div id="login">
@@ -31,10 +31,18 @@
 				</div>
 		</div>
 	</div>
-</div><br /><br /><br /><br /><br /><br /><br />
+</div>
+</div>
+<br />
+    <div id="message">
+    <center>
+    <p><b><o>Login Fail. Incorrect Username or password</o></b><p>
+    </center>
+    </div><br /><br /><br /><br /><br /><br />
 <br /><div id="footer">
 	<p id="legal">Copyright &copy; 2014 Simpletex. All Rights Reserved | Designed by Ezwan Shahrin</p>
 	<p><font color="#2492FF">Privacy Policy</font> | <font color="#2492FF">Terms of Use</font> | <a href="http://validator.w3.org/check/referer" title="This page validates as XHTML 1.0 Transitional"><abbr title="eXtensible HyperText Markup Language"><font color="#2492FF">XHTML</font></abbr></a> | <a href="http://jigsaw.w3.org/css-validator/check/referer" title="This page validates as CSS"><abbr title="Cascading Style Sheets"><font color="#2492FF">CSS</font></abbr></a></p>
     <p>Tuffah Informatic</p>
 </div></body>
 </html>
+

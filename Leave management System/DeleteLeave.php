@@ -9,5 +9,5 @@ mysql_select_db($db);
 	$id = $_GET['Delete'];
 	mysql_query("DELETE FROM leave1 WHERE LeaveID= $id");
 	echo "Your Application has been Removed";
-	Header("Location: Leave application admin.php");
+	Header("Location: leaveadd.php");
 ?>

@@ -1,3 +1,27 @@
+<?php
+session_start();
+$dbuser="root";
+$dbpass = "";
+$dbhost = "localhost";
+$conn = mysql_connect($dbhost,$dbuser,$dbpass);
+
+if(! $conn)
+{
+	die('could not connect: '. mysql_error());
+}
+$id = $_SESSION['StaffID'];
+$name = $_SESSION['StaffName'];
+
+$sql = "SELECT LeaveBal FROM staff WHERE StaffID = $id";
+
+mysql_select_db('leave_app');
+$retval = mysql_query($sql, $conn);
+if(! $retval)
+{
+	die('could not get data: '. mysql_error());
+}
+$rows = mysql_fetch_array($retval,MYSQL_ASSOC);
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -5,7 +29,7 @@
 <title></title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<link href="set.css" rel="stylesheet" type="text/css" />
+<link href="default.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="header">
@@ -16,60 +40,38 @@
 </div>
 <div id="menu">
 	<ul>
-		<li><a href="indexadd.php"><b>Profile</b></a></li>
-		<li><a href="Leaveadd.php"><b>Leave Application</b></a></li>
-		<li><a href="history.php"><b>History</b></a></li>
-		<li class="active"><a href="#"><b>Account</b></a></li>
+		<li><a href="index.php"><b>Profile</b></a></li>
+		<li class="active"><a href="#"><b>Leave Application</b></a></li>
+		<li><a href="status.php"><b>Status</b></a></li>
+		<li><a href="account.php"><b>Account</b></a></li>
 		<li><a href="logout.php"><b>Logout</b></a></li>
 	</ul>
 </div>
 <div id="page">
 	<div id="content">
 		<div id="feature" class="box-orange">
-			<h2 class="section"><b>Account</b></h2><br />
-				<h1>Update Staff</h1><br />
-				<center>
-                 <table border="0">
-						<tr>
-                        	<td><b><a href="AddStaff.php"><input id="searchsub" type="submit" value="Add Staff"/>
-              				</a></b></center></td>
-                            <td></td><td></td>
-                        	<td><a href="view.php"><input id="searchsub" type="submit" value="View Staff"/>
-                            </a></center></td>
-                            <td></td><td></td>
-                        	<td><a href="#"><input id="sea" type="submit" value="Update Staff"/>
-                            </a></center></td>
-                            <td></td><td></td>
-                        	<td><a href="Change.php"><input id="searchsub" type="submit" value="Change Password"/>
-                            </a></center></td>
-                        </tr>
-                      </table><br/></center>
-<?php
-$dbuser="root";
-$dbpass = "";
-$dbhost = "localhost";
-$conn = mysql_connect($dbhost,$dbuser,$dbpass);
+			<h2 class="section"><b>Leave Application</b></h2><br />
+				<h1>Leave Form</h1><br />
+                <center><b>Name : <?php echo $name ?></b><br /></center><br />
+                <center><?php echo "<b>Leave Available : {$rows['LeaveBal']} </b><br><br>";?></center>
 
-if(! $conn)
-{
-	die('could not connect: '. mysql_error());
-}
-$sql = "SELECT * FROM staff";
+                <center><form action="LeaveSubmit.php" method="POST">
+<table border="0" width="500">
+<tr><td><b>Leave Start  :</b></td><td><input id="searchinput" name="LeaveFromDt" type="date" value="" size="50"><br></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td><b>Leave End  :</b></td><td> <input id="searchinput" size="50" type="date" name="LeaveToDt"/><br></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td><b>Note  :</b> </td><td><input height="40" size="50" type="text" name="Note"/><br></td></tr>
+<input type="hidden" name="name" value="<?php echo $name;?>"/>
+<input type="hidden" name="id" value="<?php echo $id;?>"/>
+<input type="hidden" name="Status" value="pending"/>
 
-mysql_select_db('leave_app');
-$retval = mysql_query($sql,$conn);
-if(! $retval)
-{
-	die('could not get data: '. mysql_error());
-}
-$i=1;
-while ($row = mysql_fetch_array($retval))
-{
-
-	echo "<table border='0'><tr><td>$i. </td><td>$row[StaffName] </td><td></td><td></td><td></td><td><a href='modify.php? Modify=$row[StaffID]'><input id='searchsubmit' type='submit' value='Modify'/></a><span>   </span><span>   </span></td><td></td><td></td><td></td><td><a href='ConfirmDelete.php? Modify=$row[StaffID]'><input id='searchsubmit' type='submit' value='Delete'/></a></td></tr><br><br></table>";
-	$i++;
-}
-?>
+</table><br /><tr><td colspan="2"><center>
+<input id="searchsubmit" type="submit" value="submit"/></center></td></tr>
+</form>
+				</center>
 			</div>
 		</div>
 	</div>

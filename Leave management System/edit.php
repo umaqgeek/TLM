@@ -16,9 +16,9 @@
 </div>
 <div id="menu">
 	<ul>
-		<li><a href="indexadd.php"><b>Profile</b></a></li>
-		<li><a href="Leaveadd.php"><b>Leave Application</b></a></li>
-		<li><a href="history.php"><b>History</b></a></li>
+		<li><a href="index.php"><b>Profile</b></a></li>
+		<li><a href="Leave.php"><b>Leave Application</b></a></li>
+		<li><a href="status.php"><b>Status</b></a></li>
 		<li class="active"><a href="#"><b>Account</b></a></li>
 		<li><a href="logout.php"><b>Logout</b></a></li>
 	</ul>
@@ -27,24 +27,24 @@
 	<div id="content">
 		<div id="feature" class="box-orange">
 			<h2 class="section"><b>Account</b></h2><br />
-				<h1>Update Staff</h1><br />
-				<center>
-                 <table border="0">
+				<h1>Account Setting</h1><br />
+                <center>
+
+                      <table border="0">
 						<tr>
-                        	<td><b><a href="AddStaff.php"><input id="searchsub" type="submit" value="Add Staff"/>
+                        	<td><b><input id="sea" type="submit" value="Edit Profile"/>
               				</a></b></center></td>
                             <td></td><td></td>
-                        	<td><a href="view.php"><input id="searchsub" type="submit" value="View Staff"/>
-                            </a></center></td>
-                            <td></td><td></td>
-                        	<td><a href="#"><input id="sea" type="submit" value="Update Staff"/>
-                            </a></center></td>
-                            <td></td><td></td>
-                        	<td><a href="Change.php"><input id="searchsub" type="submit" value="Change Password"/>
+                        	<td><a href="ChangePass.php"><input id="searchsub" type="submit" value="Change Password"/>
                             </a></center></td>
                         </tr>
-                      </table><br/></center>
+                      </table><br /><br />
+
+
+
+
 <?php
+session_start();
 $dbuser="root";
 $dbpass = "";
 $dbhost = "localhost";
@@ -52,29 +52,42 @@ $db = "leave_app";
 mysql_connect($dbhost,$dbuser,$dbpass);
 mysql_select_db($db);
 
+$id = $_SESSION['StaffID'];
+$name = $_SESSION['StaffName'];
 
-if(isset($_GET['Modify']))
-{
-	$id = $_GET['Modify'];
 	$sql = mysql_query("SELECT * FROM staff WHERE StaffID= $id");
 	$row = mysql_fetch_array($sql);
-}
+
 
 ?>
 <center>
-<h1>Modify</h1><br />
-<form action="Modify.php" method="POST">
-<table border="0" width="600">
-<tr><td><b>Name:</b></td><td> <input size="50" type="text" name="StaffName" value="<?php echo $row['StaffName'];?>"/></td></tr>
-<tr><td><b>IC Number:</b></td><td> <input size="50" type="text" name="StaffIC" value="<?php echo $row['StaffIC'];?>"/></td></tr>
-<tr><td><b>Date of Born:</b></td><td> <input size="50" type="date" name="StaffDOB" value="<?php echo $row['StaffDOB'];?>"/></td></tr>
-<tr><td><b>Gender:</b></td><td> <input size="50" type="text" name="StaffGender" value="<?php echo $row['StaffGender'];?>"/></td></tr>
-<tr><td><b>Address:</b></td><td> <input size="50" type="text" name="StaffAddress" value="<?php echo $row['StaffAddress'];?>"/></td></tr>
-<tr><td><b>Phone No. :</b></td><td> <input size="50" type="text" name="StaffContactNo" value="<?php echo $row['StaffContactNo'];?>"/></td></tr>
-<tr><td><b>Email:</b></td><td> <input size="50" type="text" name="StaffEmail" value="<?php echo $row['StaffEmail'];?>"/></td></tr>
+<form action="edit.php" method="POST">
+<table border="0" width="500">
+<tr><td><b>Name:</b></td><td><input id="searchinput" size="50" type="text" name="StaffName" value="<?php echo $row['StaffName'];?>"/></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td><b>IC Number:</b></td><td> <input id="searchinput" size="50" type="text" name="StaffIC" value="<?php echo $row['StaffIC'];?>"/></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td><b>Date of Born:</b></td><td> <input id="searchinput" size="50" type="date" name="StaffDOB" value="<?php echo $row['StaffDOB'];?>"/></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td><b>Gender:</b></td><td> <input id="searchinput" size="50" type="text" name="StaffGender" value="<?php echo $row['StaffGender'];?>"/></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td><b>Address:</b></td><td> <input id="searchinput" size="50" type="text" name="StaffAddress" value="<?php echo $row['StaffAddress'];?>"/></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td><b>Phone No. :</b></td><td> <input id="searchinput" size="50" type="text" name="StaffContactNo" value="<?php echo $row['StaffContactNo'];?>"/></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td><b>Email:</b></td><td> <input id="searchinput" size="50" type="text" name="StaffEmail" value="<?php echo $row['StaffEmail'];?>"/></td></tr>
 <tr><td></td><td> <input  type="hidden" name="ID" value="<?php echo $id;?>"/></td></tr>
-<tr><td><b>Level :</b></td><td> <input size="50" readonly="readonly" name="level" value="<?php echo $row['StaffType'];?>"/></td></tr>
-
+<tr><td></td><td></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td><b>Level :</b></td><td> <input id="searchinput" size="50" readonly name="level" value="<?php echo $row['StaffType'];?>"/></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td></td></tr>
 </table><br /><tr><td colspan="2"><center>
 <input id="searchsubmit" type="submit" name="submit" value="Modify"/></center></td></tr>
 </form>
@@ -85,11 +98,10 @@ if(isset($_POST['submit']))
 
 	$sql = "UPDATE staff SET StaffName='$_POST[StaffName]',StaffIC='$_POST[StaffIC]',StaffDOB='$_POST[StaffDOB]',StaffGender='$_POST[StaffGender]',StaffAddress='$_POST[StaffAddress]',StaffContactNo='$_POST[StaffContactNo]',StaffEmail='$_POST[StaffEmail]', StaffType='$_POST[level]' WHERE StaffID= $_POST[ID]";
 	$res = mysql_query($sql) or die ("could not update".mysql_error());
-	echo "Staff Has Been Modified";
-	Header("Location:successadd.php");
+	Header("Location:success.php");
 }
 ?>
-
+                 </center>
 			</div>
 		</div>
 	</div>

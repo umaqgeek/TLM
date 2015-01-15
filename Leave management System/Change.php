@@ -27,24 +27,25 @@
 	<div id="content">
 		<div id="feature" class="box-orange">
 			<h2 class="section"><b>Account</b></h2><br />
-				<h1>View Staff</h1><br />
+				<h1>Change Password</h1><br />
 				<center>
                  <table border="0">
 						<tr>
                         	<td><b><a href="AddStaff.php"><input id="searchsub" type="submit" value="Add Staff"/>
               				</a></b></center></td>
                             <td></td><td></td>
-                        	<td><a href="view.php"><input id="sea" type="submit" value="View Staff"/>
+                        	<td><a href="view.php"><input id="searchsub" type="submit" value="View Staff"/>
                             </a></center></td>
                             <td></td><td></td>
                         	<td><a href="update.php"><input id="searchsub" type="submit" value="Update Staff"/>
                             </a></center></td>
                             <td></td><td></td>
-                        	<td><a href="Change.php"><input id="searchsub" type="submit" value="Change Password"/>
+                        	<td><a href="#"><input id="sea" type="submit" value="Change Password"/>
                             </a></center></td>
                         </tr>
                       </table><br/></center>
 <?php
+session_start();
 $dbuser="root";
 $dbpass = "";
 $dbhost = "localhost";
@@ -52,30 +53,57 @@ $db = "leave_app";
 mysql_connect($dbhost,$dbuser,$dbpass);
 mysql_select_db($db);
 
+$id = $_SESSION['StaffID'];
+$name = $_SESSION['StaffName'];
 
-if(isset($_GET['search']))
+	$sql = mysql_query("SELECT * FROM staff WHERE StaffID = $id");
+	$res = mysql_fetch_array($sql);
+
+?>
+<center>
+<h1>Enter New Password</h1><br />
+<fieldset style="width:40%">
+</br>
+<p><b>your old password = "<?php echo $res['StaffPassword'];?>"</b></p>
+</fieldset>
+</br>
+
+<form action="Change.php" method="POST">
+<table border="0" width="400">
+<tr><td><b>New Password :</b></td><td> <input  type="password" name="newpass"/></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td><b>Re-enter Password :</b></td><td> <input  type="password" name="password"/></td></tr>
+
+
+</table><br /><tr><td colspan="2"><center>
+<input id="searchsubmit" type="submit" name="submit" value="submit"/></center></td></tr>
+</form><br />
+<center>
+<?php
+if(isset($_POST['submit'])){
+
+$newpass = $_POST['newpass'];
+$password = $_POST['password'];
 {
-	$id = $_GET['search'];
-	$sql = mysql_query("SELECT * FROM staff WHERE StaffID= $id");
-    $is = mysql_fetch_array($sql);
-
-mysql_select_db('leave_app');
-
-if ($rows = $is)
-{
-	echo "<b>Name : {$rows['StaffName']} </b><br><br>".
-	     "<b>IC number : {$rows['StaffIC']} </b><br><br>".
-		 "<b>Gender : {$rows['StaffGender']} </b><br><br>".
-		 "<b>Address : {$rows['StaffAddress']} </b><br><br>".
-		 "<b>Date Of Birth : {$rows['StaffDOB']} </b><br><br>".
-		 "<b>Phone No. : {$rows['StaffContactNo']} </b><br><br>".
-		 "<b>Email : {$rows['StaffEmail']} </b><br><br>";
+	if ($newpass != '' && $password != '' ){
+		if ($newpass == $password){
+		$sql = "UPDATE staff SET StaffPassword='$_POST[newpass]' WHERE StaffType='admin'";
+		$res = mysql_query($sql) or die ("could not update".mysql_error());
+		echo "Password has been Change";
+		Header("Location:successadd.php");
+		}
+		else{
+			echo "The password didnt match";
+		}}
+	else{
+		echo "please fill the form!";
+		}}
 }
+	
 
-}
-?><br /><center>
-<a href="view.php"><input id="searchsubmit" type="submit" value="Back"/></a></center>
-                      
+
+?>
+
 			</div>
 		</div>
 	</div>

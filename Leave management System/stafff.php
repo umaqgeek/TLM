@@ -18,63 +18,53 @@
 	<ul>
 		<li><a href="indexadd.php"><b>Profile</b></a></li>
 		<li><a href="Leaveadd.php"><b>Leave Application</b></a></li>
-		<li><a href="history.php"><b>History</b></a></li>
-		<li class="active"><a href="#"><b>Account</b></a></li>
+		<li class="active"><a href="#.php"><b>History</b></a></li>
+		<li><a href="accountadd.php"><b>Account</b></a></li>
 		<li><a href="logout.php"><b>Logout</b></a></li>
 	</ul>
 </div>
 <div id="page">
 	<div id="content">
 		<div id="feature" class="box-orange">
-			<h2 class="section"><b>Account</b></h2><br />
-				<h1>View Staff</h1><br />
+			<h2 class="section"><b>History</b></h2><br />
+				<h1>Staff Leave History</h1><br />
 				<center>
-                 <table border="0">
+                      <table border="0">
 						<tr>
-                        	<td><b><a href="AddStaff.php"><input id="searchsub" type="submit" value="Add Staff"/>
-              				</a></b></center></td>
+                        	<td><a href="history.php"><input id="searchsub" type="submit" value="Approved leave"/>
+                            </center></a></td>
                             <td></td><td></td>
-                        	<td><a href="view.php"><input id="sea" type="submit" value="View Staff"/>
-                            </a></center></td>
-                            <td></td><td></td>
-                        	<td><a href="update.php"><input id="searchsub" type="submit" value="Update Staff"/>
-                            </a></center></td>
-                            <td></td><td></td>
-                        	<td><a href="Change.php"><input id="searchsub" type="submit" value="Change Password"/>
+                        	<td><a href="stafff.php"><input id="sea" type="submit" value="Staff Leave"/>
                             </a></center></td>
                         </tr>
-                      </table><br/></center>
+                      </table>
+                      </center><br />
 <?php
 $dbuser="root";
 $dbpass = "";
 $dbhost = "localhost";
-$db = "leave_app";
-mysql_connect($dbhost,$dbuser,$dbpass);
-mysql_select_db($db);
+$conn = mysql_connect($dbhost,$dbuser,$dbpass);
 
-
-if(isset($_GET['search']))
+if(! $conn)
 {
-	$id = $_GET['search'];
-	$sql = mysql_query("SELECT * FROM staff WHERE StaffID= $id");
-    $is = mysql_fetch_array($sql);
+	die('could not connect: '. mysql_error());
+}
+$sql = "SELECT * FROM staff";
 
 mysql_select_db('leave_app');
-
-if ($rows = $is)
+$retval = mysql_query($sql,$conn);
+if(! $retval)
 {
-	echo "<b>Name : {$rows['StaffName']} </b><br><br>".
-	     "<b>IC number : {$rows['StaffIC']} </b><br><br>".
-		 "<b>Gender : {$rows['StaffGender']} </b><br><br>".
-		 "<b>Address : {$rows['StaffAddress']} </b><br><br>".
-		 "<b>Date Of Birth : {$rows['StaffDOB']} </b><br><br>".
-		 "<b>Phone No. : {$rows['StaffContactNo']} </b><br><br>".
-		 "<b>Email : {$rows['StaffEmail']} </b><br><br>";
+	die('could not get data: '. mysql_error());
 }
+$i=1;
+while ($row = mysql_fetch_array($retval))
+{
 
+	echo "$i. $row[StaffName] <a href='stafffleave.php? search=$row[StaffID]'>View</a><br><br>";
+	$i++;
 }
-?><br /><center>
-<a href="view.php"><input id="searchsubmit" type="submit" value="Back"/></a></center>
+?>
                       
 			</div>
 		</div>

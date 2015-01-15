@@ -1,3 +1,13 @@
+<?php
+session_start();
+$dbuser="root";
+$dbpass = "";
+$dbhost = "localhost";
+$conn = mysql_connect($dbhost,$dbuser,$dbpass);
+
+$id = $_SESSION['StaffID'];
+$name = $_SESSION['StaffName'];
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -16,9 +26,9 @@
 </div>
 <div id="menu">
 	<ul>
-		<li><a href="indexadd.php"><b>Profile</b></a></li>
-		<li><a href="Leaveadd.php"><b>Leave Application</b></a></li>
-		<li><a href="history.php"><b>History</b></a></li>
+		<li><a href="index.php"><b>Profile</b></a></li>
+		<li><a href="Leave.php"><b>Leave Application</b></a></li>
+		<li><a href="status.php"><b>Status</b></a></li>
 		<li class="active"><a href="#"><b>Account</b></a></li>
 		<li><a href="logout.php"><b>Logout</b></a></li>
 	</ul>
@@ -27,55 +37,15 @@
 	<div id="content">
 		<div id="feature" class="box-orange">
 			<h2 class="section"><b>Account</b></h2><br />
-				<h1>View Staff</h1><br />
-				<center>
-                 <table border="0">
-						<tr>
-                        	<td><b><a href="AddStaff.php"><input id="searchsub" type="submit" value="Add Staff"/>
-              				</a></b></center></td>
-                            <td></td><td></td>
-                        	<td><a href="view.php"><input id="sea" type="submit" value="View Staff"/>
-                            </a></center></td>
-                            <td></td><td></td>
-                        	<td><a href="update.php"><input id="searchsub" type="submit" value="Update Staff"/>
-                            </a></center></td>
-                            <td></td><td></td>
-                        	<td><a href="Change.php"><input id="searchsub" type="submit" value="Change Password"/>
-                            </a></center></td>
-                        </tr>
-                      </table><br/></center>
-<?php
-$dbuser="root";
-$dbpass = "";
-$dbhost = "localhost";
-$db = "leave_app";
-mysql_connect($dbhost,$dbuser,$dbpass);
-mysql_select_db($db);
+				<h1>Account Setting</h1><br />
+                <center>
+                <?php
+				echo "<h1>Success!</h1><br />";
+				echo "<b>The changes has been saved</b><br /><br />";
+				?>
+                <a href="account.php"><input id="searchsubmit" type="submit" value="Back"/></a>
 
-
-if(isset($_GET['search']))
-{
-	$id = $_GET['search'];
-	$sql = mysql_query("SELECT * FROM staff WHERE StaffID= $id");
-    $is = mysql_fetch_array($sql);
-
-mysql_select_db('leave_app');
-
-if ($rows = $is)
-{
-	echo "<b>Name : {$rows['StaffName']} </b><br><br>".
-	     "<b>IC number : {$rows['StaffIC']} </b><br><br>".
-		 "<b>Gender : {$rows['StaffGender']} </b><br><br>".
-		 "<b>Address : {$rows['StaffAddress']} </b><br><br>".
-		 "<b>Date Of Birth : {$rows['StaffDOB']} </b><br><br>".
-		 "<b>Phone No. : {$rows['StaffContactNo']} </b><br><br>".
-		 "<b>Email : {$rows['StaffEmail']} </b><br><br>";
-}
-
-}
-?><br /><center>
-<a href="view.php"><input id="searchsubmit" type="submit" value="Back"/></a></center>
-                      
+                 </center>
 			</div>
 		</div>
 	</div>

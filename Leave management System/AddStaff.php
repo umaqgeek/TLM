@@ -27,14 +27,14 @@
 	<div id="content">
 		<div id="feature" class="box-orange">
 			<h2 class="section"><b>Account</b></h2><br />
-				<h1>View Staff</h1><br />
+				<h1>Add Staff</h1><br />
 				<center>
                  <table border="0">
 						<tr>
-                        	<td><b><a href="AddStaff.php"><input id="searchsub" type="submit" value="Add Staff"/>
+                        	<td><b><a href="#"><input id="sea" type="submit" value="Add Staff"/>
               				</a></b></center></td>
                             <td></td><td></td>
-                        	<td><a href="view.php"><input id="sea" type="submit" value="View Staff"/>
+                        	<td><a href="view.php"><input id="searchsub" type="submit" value="View Staff"/>
                             </a></center></td>
                             <td></td><td></td>
                         	<td><a href="update.php"><input id="searchsub" type="submit" value="Update Staff"/>
@@ -43,39 +43,23 @@
                         	<td><a href="Change.php"><input id="searchsub" type="submit" value="Change Password"/>
                             </a></center></td>
                         </tr>
-                      </table><br/></center>
-<?php
-$dbuser="root";
-$dbpass = "";
-$dbhost = "localhost";
-$db = "leave_app";
-mysql_connect($dbhost,$dbuser,$dbpass);
-mysql_select_db($db);
-
-
-if(isset($_GET['search']))
-{
-	$id = $_GET['search'];
-	$sql = mysql_query("SELECT * FROM staff WHERE StaffID= $id");
-    $is = mysql_fetch_array($sql);
-
-mysql_select_db('leave_app');
-
-if ($rows = $is)
-{
-	echo "<b>Name : {$rows['StaffName']} </b><br><br>".
-	     "<b>IC number : {$rows['StaffIC']} </b><br><br>".
-		 "<b>Gender : {$rows['StaffGender']} </b><br><br>".
-		 "<b>Address : {$rows['StaffAddress']} </b><br><br>".
-		 "<b>Date Of Birth : {$rows['StaffDOB']} </b><br><br>".
-		 "<b>Phone No. : {$rows['StaffContactNo']} </b><br><br>".
-		 "<b>Email : {$rows['StaffEmail']} </b><br><br>";
-}
-
-}
-?><br /><center>
-<a href="view.php"><input id="searchsubmit" type="submit" value="Back"/></a></center>
-                      
+                      </table><br/>
+                <form action="ConfirmAdd.php" method="POST">
+<table border="0" width="400">
+<tr><td><b>Name:</b></td><td> <input size="50" type="text" name="StaffName"/></td></tr>
+<tr><td><b>IC No. :</b></td><td> <input size="50" type="text" name="StaffIC"/></td></tr>
+<tr><td><b>Date of Birth:</b></td><td> <input size="50" type="date" name="StaffDOB"/></td></tr>
+<tr><td><b>Gender:</b></td><td> <input size="50" type="text" name="StaffGender"/></td></tr>
+<tr><td><b>Address:</b> </td><td><input size="50" type="text" name="StaffAddress"/></td></tr>
+<tr><td><b>Phone no.:</b> </td><td><input size="50" type="text" name="StaffContactNo"/></td></tr>
+<tr><td><b>Email:</b></td><td> <input size="50" type="text" name="StaffEmail"/></td></tr>
+<tr><td><b>type:</b></td><td> <input name="StaffType" type="text" size="50" readonly="readonly" value="staff"/></td></tr>
+<tr><td><b>Username:</b> </td><td><input size="50" type="text" name="StaffUsername"/></td></tr>
+<tr><td><b>Password:</b> </td><td><input size="50" type="text" name="StaffPassword"/></td></tr>
+</table><br /><tr><td colspan="2"><center>
+<input id="searchsubmit" type="submit" value="Add"/></center></td></tr>
+</form>
+                      </center>
 			</div>
 		</div>
 	</div>
