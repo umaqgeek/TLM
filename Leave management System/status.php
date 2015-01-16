@@ -28,7 +28,7 @@ $sql = "SELECT * FROM leave1 WHERE StaffName = '$name'";
 </div>
 <div id="menu">
 	<ul>
-		<li><a href="index.php"><b>Profile</b></a></li>
+		<li><a href="indexs.php"><b>Profile</b></a></li>
 		<li><a href="Leave.php"><b>Leave Application</b></a></li>
 		<li class="active"><a href="#"><b>Status</b></a></li>
 		<li><a href="account.php"><b>Account</b></a></li>
@@ -47,6 +47,7 @@ $sql = "SELECT * FROM leave1 WHERE StaffName = '$name'";
                     <th>No</th>
                     <th>Leave Start</th>
                     <th>Leave End</th>
+                    <th>Leave Day</th>
                     <th>Note</th>
                     <th>Status</th>
                     </tr></center>
@@ -65,6 +66,7 @@ while ($res = mysql_fetch_array($retval))
 	 echo "<td align='center'>".$i."</td>";
 	 echo "<td align='center'>".$res['LeaveFromDt']."</td>";
 	 echo "<td align='center'>".$res['LeaveToDt']."</td>";
+	 echo "<td align='center'>".$res['LeaveDay']."</td>";
 	 echo "<td align='center'>".$res['Note']."</td>";
 	 echo "<td align='center'>".$res['LeaveStatus']."</td>";
 	 $i++;
@@ -78,6 +80,16 @@ while ($res = mysql_fetch_array($retval))
 	</div>
     
 	<div id="sidebar" class="two-cols">
+    				<?php
+				date_default_timezone_set("Asia/Kuala_lumpur");
+				$date=date("D-M-Y");
+				$kl =date("d-m-Y");
+				
+				echo "<b><o>$date</o></b><br/>";
+				echo "<b><o>$kl</o></b><br/>";
+				
+				
+				?><br />
     <img src="images/tuffah1.jpg" width="300"/><br /><br />
 		<div class="col-one">
 			<div class="box-pink">

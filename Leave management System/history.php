@@ -46,6 +46,7 @@
     <th>Name</th>
     <th>Leave Start</th>
     <th>Leave End</th>
+    <th>Leave Day</th>
     <th>Note</th>
     <th>Status</th>
     
@@ -76,6 +77,7 @@ while ($res = mysql_fetch_array($retval))
 	 echo "<td align='center'>".$res['StaffName']."</td>";
 	 echo "<td align='center'>".$res['LeaveFromDt']."</td>";
 	 echo "<td align='center'>".$res['LeaveToDt']."</td>";
+	 echo "<td align='center'>".$res['LeaveDay']."</td>";
 	 echo "<td align='center'>".$res['Note']."</td>";
 	 echo "<td align='center'>".$res['LeaveStatus']."</td>";
 	 $i++;

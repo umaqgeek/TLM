@@ -42,8 +42,10 @@
                       <table width="600" border="2" rules="all" >
                     <tr>
                     <th>No</th>
+                    <th>Name</th>
                     <th>Leave Start</th>
                     <th>Leave End</th>
+                    <th>Leave Day</th>
                     <th>Note</th>
                     <th>Status</th>
                     </tr></center>
@@ -59,26 +61,30 @@ mysql_select_db($db);
 if(isset($_GET['search']))
 {
 	$id = $_GET['search'];
-	$sql = mysql_query("SELECT * FROM leave1 WHERE StaffID= $id AND LeaveStatus='Approved'");
-    $is = mysql_fetch_array($sql);
+	$sql = "SELECT * FROM leave1 WHERE StaffID = $id AND LeaveStatus='Approved' OR LeaveStatus='Rejected'";
 
 mysql_select_db('leave_app');
-
-if ($rows = $is)
+$retval = mysql_query($sql);
+if(! $retval)
 {
-	$i=1;
-	
+	die('could not get data: '. mysql_error());
+}
+$i=1;
+while ($res = mysql_fetch_array($retval))
+{
 	 echo "<tr>";
 	 echo "<td align='center'>".$i."</td>";
-	 echo "<td align='center'>".$rows['LeaveFromDt']."</td>";
-	 echo "<td align='center'>".$rows['LeaveToDt']."</td>";
-	 echo "<td align='center'>".$rows['Note']."</td>";
-	 echo "<td align='center'>".$rows['LeaveStatus']."</td>";
+	 echo "<td align='center'>".$res['StaffName']."</td>";
+	 echo "<td align='center'>".$res['LeaveFromDt']."</td>";
+	 echo "<td align='center'>".$res['LeaveToDt']."</td>";
+	 echo "<td align='center'>".$res['LeaveDay']."</td>";
+	 echo "<td align='center'>".$res['Note']."</td>";
+	 echo "<td align='center'>".$res['LeaveStatus']."</td>";
 	 $i++;
-}
-
-}
-?></table><br /><center>
+}}
+?> 
+</table>
+<br /><center>
 <a href="stafff.php"><input id="searchsubmit" type="submit" value="Back"/></a></center>
                       
 			</div>

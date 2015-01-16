@@ -26,7 +26,7 @@ $name = $_SESSION['StaffName'];
 </div>
 <div id="menu">
 	<ul>
-		<li><a href="index.php"><b>Profile</b></a></li>
+		<li><a href="indexs.php"><b>Profile</b></a></li>
 		<li><a href="Leave.php"><b>Leave Application</b></a></li>
 		<li><a href="status.php"><b>Status</b></a></li>
 		<li class="active"><a href="#"><b>Account</b></a></li>
@@ -56,6 +56,16 @@ $name = $_SESSION['StaffName'];
 	</div>
     
 	<div id="sidebar" class="two-cols">
+    				<?php
+				date_default_timezone_set("Asia/Kuala_lumpur");
+				$date=date("D-M-Y");
+				$kl =date("d-m-Y");
+				
+				echo "<b><o>$date</o></b><br/>";
+				echo "<b><o>$kl</o></b><br/>";
+				
+				
+				?><br />
     <img src="images/tuffah1.jpg" width="300"/><br /><br />
 		<div class="col-one">
 			<div class="box-pink">

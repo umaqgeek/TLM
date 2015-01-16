@@ -35,6 +35,7 @@
     <th>Name</th>
     <th>Leave Start</th>
     <th>Leave End</th>
+    <th>Leave Day</th>
     <th>Note</th>
     <th>Status</th>
     <th>Action</th>
@@ -67,9 +68,10 @@ while ($res = mysql_fetch_array($retval))
 	 echo "<td align='center'>".$res['StaffName']."</td>";
 	 echo "<td align='center'>".$res['LeaveFromDt']."</td>";
 	 echo "<td align='center'>".$res['LeaveToDt']."</td>";
+	 echo "<td align='center'>".$res['LeaveDay']."</td>";
 	 echo "<td align='center'>".$res['Note']."</td>";
 	 echo "<td align='center'>".$res['LeaveStatus']."</td>";
-	 echo "<td align='center'><a href='ApproveLeave.php?status=$res[LeaveID]'>Approve</a><span>  </span><a href='DeleteLeave.php?Delete=$res[LeaveID]'>Delete</a></td><br>";
+	 echo "<td align='center'><a href='ApproveLeave.php?status=$res[LeaveID]'>Approve</a><span>  </span><a href='reject.php?status=$res[LeaveID]'>Reject</a><span>  </span><a href='DeleteLeave.php?Delete=$res[LeaveID]'>Delete</a></td><br>";
 	 $i++;
  }
 ?>

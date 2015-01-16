@@ -1,5 +1,6 @@
   <?php
 include("config.php");
+date_default_timezone_set("Asia/Kuala_lumpur");
 
 if (isset($_POST['StaffUsername'])){
 $StaffUsername = $_POST['StaffUsername'];
@@ -28,7 +29,7 @@ $StaffPassword = $_POST['StaffPassword'];
 				if($Today == $year){
 			$_SESSION['StaffID']=$row['StaffID'];
 			$_SESSION['StaffName']=$row['StaffName'];
-			Header ("Location: index.php");
+			Header ("Location: indexs.php");
 			exit();
 				}
 				else{
@@ -36,7 +37,7 @@ $StaffPassword = $_POST['StaffPassword'];
 				$rus = mysql_query($query);
 			$_SESSION['StaffID']=$row['StaffID'];
 			$_SESSION['StaffName']=$row['StaffName'];
-			Header ("Location: index.php");
+			Header ("Location: indexs.php");
 			exit();
 			}}}
 	else{

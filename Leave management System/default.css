@@ -41,7 +41,9 @@ p, ul, ol {
 	margin-bottom: 1.5em;
 	line-height: 1.6em;
 }
-
+o{
+	color:#B00;
+}
 p {
 }
 
