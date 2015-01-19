@@ -59,7 +59,7 @@ $query = mysql_fetch_array($sa);
 $leavebal = $query['LeaveBal'];
 
 if ($LeaveFromDt >= $now){
-if ($LeaveToDt > $LeaveFromDt){
+if ($LeaveToDt >= $LeaveFromDt){
 	if ($leavebal > 0){
 		
 
