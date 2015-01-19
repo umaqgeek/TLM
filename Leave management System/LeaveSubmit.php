@@ -48,6 +48,9 @@ $Note = $_POST['Note'];
 $nn = $_POST['name'];
 $id = $_POST['id'];
 
+date_default_timezone_set("Asia/Kuala_lumpur");
+$now =date("Y-m-d");
+
 if ($LeaveFromDt != ''&& $LeaveToDt !=''&& $Status != ''&& $Note !=''&& $nn != ''){
 	
 $seq = "SELECT * FROM staff WHERE StaffID = $id";
@@ -55,6 +58,7 @@ $sa = mysql_query($seq);
 $query = mysql_fetch_array($sa);
 $leavebal = $query['LeaveBal'];
 
+if ($LeaveFromDt >= $now){
 if ($LeaveToDt > $LeaveFromDt){
 	if ($leavebal > 0){
 		
@@ -95,6 +99,9 @@ if ($LeaveToDt > $LeaveFromDt){
 		}}
 	else{
 	echo "<b><p>invalid date requested</b></p>";
+	}}
+	else{
+		echo"<b>you've entered the past day</b><br/>";
 	}}
 else{
 echo "<b><p>please fill the form</b></p>";
